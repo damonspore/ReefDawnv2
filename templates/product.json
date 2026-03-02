@@ -21,7 +21,7 @@
         "26c38253-4e8d-4bea-aac9-b6b6b002d032": {
           "type": "icon-with-text",
           "settings": {
-            "layout": "vertical",
+            "layout": "horizontal",
             "icon_1": "truck",
             "heading_1": "Free Ground Shipping Over $300",
             "icon_2": "fire",
@@ -33,7 +33,7 @@
         "icon_with_text_WYarcw": {
           "type": "icon-with-text",
           "settings": {
-            "layout": "vertical",
+            "layout": "horizontal",
             "icon_1": "star",
             "heading_1": "900+ Reviews on <a href=\"https:\/\/www.trustpilot.com\/review\/reeftel.com?utm_medium=trustbox&utm_source=MicroCombo\" target=\"_blank\" title=\"https:\/\/www.trustpilot.com\/review\/reeftel.com?utm_medium=trustbox&utm_source=MicroCombo\">Trustpilot<\/a>",
             "icon_2": "none",
