@@ -1,0 +1,34 @@
+
+{%- if request.page_type == 'index' -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ElectronicsStore",
+  "url": "https://www.reeftel.com",
+  "name": "Reef Telecom",
+  "description": "Environmentally Responsible Telecom Sourcing Solutions. Refurbished VoIP phones, thin clients, and network switches.",
+  "image": "{{ settings.logo | image_url: width: 600 }}",
+  "email": "sales@reeftel.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1107 Saint Andrews Rd.",
+    "addressLocality": "Hollywood",
+    "addressRegion": "FL",
+    "postalCode": "33021",
+    "addressCountry": "US"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "09:00",
+    "closes": "18:00"
+  },
+  "sameAs": [
+    "https://www.facebook.com/reeftelecom/",
+    "https://www.instagram.com/reeftelecom/"
+  ],
+  "telephone": "+18882173331",
+  "priceRange": "$$"
+}
+</script>
+{%- endif -%}

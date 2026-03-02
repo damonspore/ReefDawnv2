@@ -1,0 +1,465 @@
+{% doc %}
+  @prompt
+    Sharing Buttons for Email
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-email-share-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    align-items: {{ block.settings.alignment }};
+    gap: {{ block.settings.spacing }}px;
+    padding: {{ block.settings.padding }}px;
+    background-color: {{ block.settings.background_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+  }
+
+  .ai-email-share__heading-{{ ai_gen_id }} {
+    margin: 0;
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.heading_size }}px;
+    text-align: {{ block.settings.text_alignment }};
+  }
+
+  .ai-email-share__description-{{ ai_gen_id }} {
+    margin: 0;
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.text_size }}px;
+    text-align: {{ block.settings.text_alignment }};
+  }
+
+  .ai-email-share__buttons-{{ ai_gen_id }} {
+    display: flex;
+    flex-wrap: wrap;
+    gap: {{ block.settings.button_spacing }}px;
+    justify-content: {{ block.settings.alignment }};
+  }
+
+  .ai-email-share__button-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: {{ block.settings.button_padding }}px {{ block.settings.button_padding | times: 1.5 }}px;
+    background-color: {{ block.settings.button_color }};
+    color: {{ block.settings.button_text_color }};
+    text-decoration: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-size: {{ block.settings.button_text_size }}px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .ai-email-share__button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_color }};
+    color: {{ block.settings.button_hover_text_color }};transform: translateY(-2px);
+  }
+
+  .ai-email-share__button-icon-{{ ai_gen_id }} {
+    width: {{ block.settings.icon_size }}px;
+    height: {{ block.settings.icon_size }}px;
+    flex-shrink: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-email-share__buttons-{{ ai_gen_id }} {
+      justify-content: center;
+    }
+    .ai-email-share__button-{{ ai_gen_id }} {
+      flex: 1;justify-content: center;
+      min-width: 120px;
+    }
+  }
+{% endstyle %}
+
+<email-share-{{ ai_gen_id }}
+  class="ai-email-share-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  {% if block.settings.heading != blank %}
+    <h3 class="ai-email-share__heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h3>
+  {% endif %}
+
+  {% if block.settings.description != blank %}
+    <div class="ai-email-share__description-{{ ai_gen_id }}">{{ block.settings.description }}</div>
+  {% endif %}
+
+  <div class="ai-email-share__buttons-{{ ai_gen_id }}">
+    {% if block.settings.show_gmail %}
+      <a
+        href="#"
+        class="ai-email-share__button-{{ ai_gen_id }} ai-email-share__gmail-{{ ai_gen_id }}"
+        data-service="gmail"
+        aria-label="Share via Gmail"
+      >
+        <svg class="ai-email-share__button-icon-{{ ai_gen_id }}" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
+        </svg>
+        {% if block.settings.show_text %}Gmail{% endif %}
+      </a>
+    {% endif %}
+
+    {% if block.settings.show_outlook %}
+      <a
+        href="#"
+        class="ai-email-share__button-{{ ai_gen_id }} ai-email-share__outlook-{{ ai_gen_id }}"
+        data-service="outlook"
+        aria-label="Share via Outlook"
+      >
+        <svg class="ai-email-share__button-icon-{{ ai_gen_id }}" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M7.88 12.04q0 .45-.11.87-.1.41-.33.74-.22.33-.58.52-.37.2-.87.2t-.87-.2q-.36-.19-.58-.52-.22-.33-.33-.74-.1-.42-.1-.87 0-.44.1-.86.11-.41.33-.74.22-.33.58-.52.36-.19.87-.19t.87.19q.37.19.58.52.22.33.33.74.11.42.11.86zm-3.24 0q0 .57.2.86.2.3.52.3.32 0 .52-.3.2-.29.2-.86 0-.57-.2-.86-.2-.3-.52-.3-.32 0-.52.3-.2.29-.2.86zm15.34-4.67v9.26q0 .69-.5 1.18-.5.5-1.18.5H5.69q-.69 0-1.18-.5-.5-.49-.5-1.18V7.37q0-.69.5-1.18.49-.5 1.18-.5h12.61q.69 0 1.18.5.5.49.5 1.18zm-1.81.78H6.5v7.7h11.67V8.15z"/>
+        </svg>
+        {% if block.settings.show_text %}Outlook{% endif %}
+      </a>
+    {% endif %}
+
+    {% if block.settings.show_yahoo %}
+      <a
+        href="#"
+        class="ai-email-share__button-{{ ai_gen_id }} ai-email-share__yahoo-{{ ai_gen_id }}"
+        data-service="yahoo"
+        aria-label="Share via Yahoo Mail"
+      >
+        <svg class="ai-email-share__button-icon-{{ ai_gen_id }}" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.568 7.34l-3.916 7.076v4.061h-3.304v-4.061L6.432 7.34h3.778l2.28 4.781h.02L14.79 7.34h3.778z"/>
+        </svg>
+        {% if block.settings.show_text %}Yahoo{% endif %}
+      </a>
+    {% endif %}
+
+    {% if block.settings.show_default %}
+      <a
+        href="#"
+        class="ai-email-share__button-{{ ai_gen_id }} ai-email-share__default-{{ ai_gen_id }}"
+        data-service="default"
+        aria-label="Share via Email"
+      >
+        <svg class="ai-email-share__button-icon-{{ ai_gen_id }}" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+        {% if block.settings.show_text %}Email{% endif %}
+      </a>
+    {% endif %}
+  </div>
+</email-share-{{ ai_gen_id }}><script>
+  (function() {
+    class EmailShare{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.setupEventListeners();
+      }
+
+      setupEventListeners() {
+        const buttons = this.querySelectorAll('.ai-email-share__button-{{ ai_gen_id }}');
+        
+        buttons.forEach(button => {
+          button.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.handleEmailShare(button.dataset.service);
+          });
+        });
+      }
+
+      handleEmailShare(service) {
+        const subject = encodeURIComponent('{{ block.settings.email_subject | default: "Check out this page" | escape }}');
+        const body = encodeURIComponent('{{ block.settings.email_body | default: "I thought you might be interested in this:" | escape }}\n\n' + window.location.href);
+        
+        let mailtoUrl = '';
+        switch(service) {
+          case 'gmail':
+            mailtoUrl = `https://mail.google.com/mail/?view=cm&fs=1&su=${subject}&body=${body}`;
+            break;
+          case 'outlook':
+            mailtoUrl = `https://outlook.live.com/mail/0/deeplink/compose?subject=${subject}&body=${body}`;
+            break;
+          case 'yahoo':
+            mailtoUrl = `https://compose.mail.yahoo.com/?subject=${subject}&body=${body}`;
+            break;
+          default:
+            mailtoUrl = `mailto:?subject=${subject}&body=${body}`;
+        }
+        
+        if (service === 'default') {
+          window.location.href = mailtoUrl;
+        } else {
+          window.open(mailtoUrl, '_blank', 'noopener,noreferrer');
+        }
+      }
+    }
+
+    customElements.define('email-share-{{ ai_gen_id }}', EmailShare{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Email sharing buttons",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Share via Email"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Share this page with friends and family"
+    },
+    {
+      "type": "text",
+      "id": "email_subject",
+      "label": "Email subject",
+      "default": "Check out this page"
+    },
+    {
+      "type": "textarea",
+      "id": "email_body",
+      "label": "Email body",
+      "default": "I thought you might be interested in this:"
+    },
+    {
+      "type": "header",
+      "content": "Email services"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_gmail",
+      "label": "Show Gmail",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_outlook",
+      "label": "Show Outlook",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_yahoo",
+      "label": "Show Yahoo Mail",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_default",
+      "label": "Show default email",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_text",
+      "label": "Show button text",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "spacing",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Section spacing",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_spacing",
+      "min": 4,
+      "max": 32,
+      "step": 4,
+      "unit": "px",
+      "label": "Button spacing",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Section padding",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f9f9f9"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button hover color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Button hover text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 14,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Text size",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "button_text_size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Button text size",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Button style"
+    },
+    {
+      "type": "range",
+      "id": "button_padding",
+      "min": 8,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Button padding",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Button border radius",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Section border radius",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "min": 16,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Icon size",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "Email sharing buttons"
+    }
+  ],
+  "tag": null
+}
+{% endschema %}

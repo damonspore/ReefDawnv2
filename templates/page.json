@@ -1,0 +1,125 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "1755712681ff4afe0c": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_2fbc87d_c8VpDY": {
+          "type": "ai_gen_block_2fbc87d",
+          "settings": {
+            "heading": "Share this Page with Colleagues",
+            "description": "",
+            "email_subject": "I found us a new telecom equipment supplier!",
+            "email_body": "Have a look at Reef Telecom, I think this may be a good solution for us!",
+            "show_gmail": true,
+            "show_outlook": true,
+            "show_yahoo": false,
+            "show_default": true,
+            "show_text": true,
+            "alignment": "center",
+            "text_alignment": "center",
+            "spacing": 16,
+            "button_spacing": 12,
+            "padding": 20,
+            "background_color": "#f9f9f9",
+            "text_color": "#121212",
+            "button_color": "#121212",
+            "button_text_color": "#ffffff",
+            "button_hover_color": "#000000",
+            "button_hover_text_color": "#ffffff",
+            "heading_size": 20,
+            "text_size": 14,
+            "button_text_size": 14,
+            "button_padding": 12,
+            "button_border_radius": 6,
+            "border_radius": 8,
+            "icon_size": 20
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_2fbc87d_c8VpDY"
+      ],
+      "settings": {}
+    },
+    "multicolumn_GKFGRM": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_UHqPqX": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/coral-restoration-foundation-logo-word-navy-blue-stylized-branch-inside.webp",
+            "title": "Coral Restoration Foundation",
+            "text": "",
+            "link_label": "2024 Staghorn Donor",
+            "link": "https:\/\/www.coralrestoration.org\/"
+          }
+        },
+        "column_rpfD4e": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/ocean-conservancy-logo-features-circular-design-composed-blue-silhouettes-marine.webp",
+            "title": "Ocean Conservancy",
+            "text": "",
+            "link_label": "2024 Donor",
+            "link": "https:\/\/oceanconservancy.org"
+          }
+        },
+        "column_4G3XHi": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/woods-hole-oceanographic-institution-logo-stylized-blue-teal-wave-design.webp",
+            "title": "WHOI",
+            "text": "",
+            "link_label": "2024 Associate Member",
+            "link": "https:\/\/www.whoi.edu\/know-your-ocean\/"
+          }
+        },
+        "column_UitMfh": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/gold-colored-stylized-shark-logo-bold-black-outline-set-solid-background.webp",
+            "title": "SHCS SharkFest",
+            "text": "<p>2024 SharkFest Sponsor<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_UHqPqX",
+        "column_rpfD4e",
+        "column_4G3XHi",
+        "column_UitMfh"
+      ],
+      "settings": {
+        "title": "Reef Telecom Proudly Supports",
+        "heading_size": "h2",
+        "image_width": "half",
+        "image_ratio": "square",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1755712681ff4afe0c",
+    "multicolumn_GKFGRM"
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Smart IT. Clean Oceans. Boundless Possibilities.",
+            "heading_size": "h1"
+          }
+        },
+        "text_4NJnPc": {
+          "type": "text",
+          "settings": {
+            "text": "At Reef our mission is to provide the highest quality refurbished equipment and encourage environmentally-conscious equipment usage throughout its lifecycle. From VoIP Phones to Thin Clients and High Performance Switches powering next-generation AI clusters, we try help not only your bottom line, but the Earth's as well.",
+            "text_style": "subtitle"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop Deals",
+            "button_link_1": "shopify:\/\/collections\/featured-deals",
+            "button_style_secondary_1": true,
+            "button_label_2": "About Us",
+            "button_link_2": "shopify:\/\/pages\/mission",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text_4NJnPc",
+        "button"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/vibrant-coral-reef-word-spelled-colorful-textured-corals-surrounded-marine.webp",
+        "image_overlay_opacity": 70,
+        "image_height": "small",
+        "image_behavior": "fixed",
+        "desktop_content_position": "bottom-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "inverse",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "1756154740ae1b6fc4": {
+      "type": "apps",
+      "disabled": true,
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "featured-deals",
+        "products_to_show": 8,
+        "title": "Featured Deals",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "background-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "collection_list_iAjpa7": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_HtAxTH": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "ai-solutions"
+          }
+        },
+        "featured_collection_JJEkdb": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "phones-cisco"
+          }
+        },
+        "featured_collection_UgkhBd": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dell-wyse-thin-clients"
+          }
+        },
+        "featured_collection_g3NtwE": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "nvidia-spectrum"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_HtAxTH",
+        "featured_collection_JJEkdb",
+        "featured_collection_UgkhBd",
+        "featured_collection_g3NtwE"
+      ],
+      "settings": {
+        "title": "Shop by Category",
+        "heading_size": "h2",
+        "image_ratio": "square",
+        "columns_desktop": 4,
+        "color_scheme": "",
+        "show_view_all": true,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "custom_liquid_n6a8Uy": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<!-- TrustBox widget - Starter -->\n<div class=\"trustpilot-widget\" data-locale=\"en-US\" data-template-id=\"5613c9cde69ddc09340c6beb\" data-businessunit-id=\"65c538d1df194ffd531897a2\" data-style-height=\"100%\" data-style-width=\"100%\" data-theme=\"light\">\n  <a href=\"https:\/\/www.trustpilot.com\/review\/reeftel.com\" target=\"_blank\" rel=\"noopener\">Trustpilot<\/a>\n<\/div>\n<!-- End TrustBox widget -->",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "multicolumn_cqAgL3": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_gtV8rM": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/white-ocearch-logo-stylized-shark-silhouette-wavy-lines-set-underwater.webp",
+            "title": "Ocearch",
+            "text": "",
+            "link_label": "2026 Monthly Shark Hero",
+            "link": "https:\/\/www.ocearch.org\/about\/"
+          }
+        },
+        "column_GdjjiD": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/coral-restoration-foundation-logo-word-navy-blue-stylized-branch-inside.webp",
+            "title": "Coral Restoration Foundation",
+            "text": "",
+            "link_label": "2025 Staghorn Donor",
+            "link": "https:\/\/www.coralrestoration.org\/"
+          }
+        },
+        "column_3Ydqfe": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/ocean-conservancy-logo-features-circular-design-composed-blue-silhouettes-marine.webp",
+            "title": "Ocean Conservancy",
+            "text": "",
+            "link_label": "2025 Donor",
+            "link": "https:\/\/oceanconservancy.org"
+          }
+        },
+        "column_HHhYmr": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/woods-hole-oceanographic-institution-logo-stylized-blue-teal-wave-design.webp",
+            "title": "WHOI",
+            "text": "",
+            "link_label": "2025 Associate Member",
+            "link": "https:\/\/www.whoi.edu\/know-your-ocean\/"
+          }
+        }
+      },
+      "block_order": [
+        "column_gtV8rM",
+        "column_GdjjiD",
+        "column_3Ydqfe",
+        "column_HHhYmr"
+      ],
+      "settings": {
+        "title": "Reef Telecom Proudly Supports",
+        "heading_size": "h2",
+        "image_width": "half",
+        "image_ratio": "square",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "1711289065cae650c8": {
+      "type": "apps",
+      "blocks": {
+        "planet_shopify_planet_3hHgVK": {
+          "type": "shopify:\/\/apps\/planet\/blocks\/shopify-planet\/12047591-3a2d-45cc-9dfd-2ce5eaa45dee",
+          "settings": {
+            "badgeMode": "info",
+            "customText": "",
+            "showMoreInfo": "modal",
+            "showLogo": true,
+            "showStats": true,
+            "showProjects": false,
+            "backgroundColor": "#f1f8f5",
+            "textColor": "#1d4136",
+            "borderColor": "#95c9b4",
+            "fullWidth": true,
+            "marginTop": 0,
+            "marginBottom": 0,
+            "borderRadius": 4
+          }
+        }
+      },
+      "block_order": [
+        "planet_shopify_planet_3hHgVK"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "1756154740ae1b6fc4",
+    "featured_collection",
+    "collection_list_iAjpa7",
+    "custom_liquid_n6a8Uy",
+    "multicolumn_cqAgL3",
+    "1711289065cae650c8"
+  ]
+}
