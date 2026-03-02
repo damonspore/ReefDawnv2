@@ -7,7 +7,13 @@
 
 .price > * {
   display: inline-block;
-  vertical-align: top;
+  vertical-align: middle;
+}
+
+.price__savings.badge {
+  vertical-align: middle;
+  font-size: 1.2rem;
+  margin: 0 0.5rem;
 }
 
 .price.price--unavailable {

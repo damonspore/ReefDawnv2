@@ -113,7 +113,7 @@
         {%- endif -%}
       </div>
       {%- if compare_at_price > price -%}
-        <span class="price__savings badge color-{{ settings.sale_badge_color_scheme }}" style="vertical-align: middle; margin: 0 0.5rem; font-size: 1.2rem;">
+        <span class="price__savings badge color-{{ settings.sale_badge_color_scheme }}">
           Save {{ savings | money }} ({{ savings_percent }}%)
         </span>
       {%- endif -%}
