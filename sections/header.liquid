@@ -435,7 +435,7 @@
 
 <script type="application/ld+json">
   {
-    "@context": "http://schema.org",
+    "@context": "https://schema.org",
     "@type": "Organization",
     "name": {{ shop.name | json }},
     {% if settings.logo %}
@@ -452,7 +452,15 @@
       {{ settings.social_youtube_link | json }},
       {{ settings.social_vimeo_link | json }}
     ],
-    "url": {{ request.origin | append: page.url | json }}
+    "url": {{ request.origin | append: page.url | json }},
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+1-888-217-3331",
+      "contactType": "sales",
+      "email": "sales@reeftel.com",
+      "availableLanguage": "English"
+    },
+    "description": {{ shop.description | json }}
   }
 </script>
 
@@ -460,7 +468,7 @@
   {% assign potential_action_target = request.origin | append: routes.search_url | append: '?q={search_term_string}' %}
   <script type="application/ld+json">
     {
-      "@context": "http://schema.org",
+      "@context": "https://schema.org",
       "@type": "WebSite",
       "name": {{ shop.name | json }},
       "potentialAction": {

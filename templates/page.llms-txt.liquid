@@ -1,0 +1,60 @@
+{% layout none %}{% capture llms_content %}# {{ shop.name }}
+
+> {{ shop.description | default: "Reef Telecom provides high-quality refurbished and new telecom equipment with industry-leading 10-year warranties, same-day shipping, and competitive pricing for businesses." }}
+
+## About
+
+Reef Telecom is an environmentally responsible telecom sourcing company specializing in professionally refurbished networking and telecommunications equipment. Based in the US, we serve businesses with over 27 years of combined secondary market and ITAD experience. We are committed to promoting environmentally-conscious equipment usage through its lifecycle.
+
+- [Homepage]({{ shop.url }}): Main storefront and featured deals
+- [About / Mission]({{ shop.url }}/pages/our-mission): Our environmental mission and company values
+- [Warranty]({{ shop.url }}/pages/warranty): Industry-leading 10 Year Warranty details
+- [Contact]({{ shop.url }}/pages/contact-us-1): Sales and support contact information
+
+## Product Categories
+
+- [IP Phones]({{ shop.url }}/collections): Cisco, Polycom, Yealink, Avaya
+- [AI Networking]({{ shop.url }}/collections): Nvidia Spectrum, Nvidia Optics, Juniper Mist AI, Cisco Nexus
+- [Switches]({{ shop.url }}/collections): Cisco, Meraki, Juniper, Arista, HP/Aruba (25G-400G transit)
+- [Routers]({{ shop.url }}/collections): Cisco, Juniper, Adtran
+- [Wireless]({{ shop.url }}/collections): Cisco, Ruckus, Fortinet, Meraki, Juniper Mist
+- [Firewalls]({{ shop.url }}/collections): Cisco, Meraki, Fortinet, Juniper SRX
+- [Headsets]({{ shop.url }}/collections): Plantronics/Poly wireless headsets
+
+## Solutions
+
+- [AI Solutions]({{ shop.url }}/pages/ai-solutions): AI networking infrastructure
+- [Healthcare]({{ shop.url }}/pages/healthcare): Telecom solutions for healthcare
+- [K-12 / Universities]({{ shop.url }}/pages/k12-universities): Education sector solutions
+
+## Key Information
+
+- **Warranty**: 10 Year Warranty on all products
+- **Shipping**: Free ground shipping on orders over $300; same-day shipping before 4PM EST
+- **Phone**: 1(888)-217-3331
+- **Email**: sales@reeftel.com
+- **Hours**: Mon-Fri 9am-6pm EST
+- **DUNS**: 06-7870-434
+- **CAGE**: 9RKG8
+- **Trustpilot**: 900+ reviews
+
+## Environmental Commitment
+
+- 2026 Monthly Shark Hero with Ocearch
+- 2025 Staghorn Donor with Coral Restoration Foundation
+- 2025 Donor with Ocean Conservancy
+- 2026 Associate Member with Woods Hole Oceanographic Institution (WHOI)
+- Carbon-neutral shipping on all orders via Shopify Planet
+
+## Blog & Resources
+
+- [Knowledge Base]({{ shop.url }}/blogs/reef-telecom-knowledge-base-how-tos): Setup guides and FAQs
+- [Blog]({{ shop.url }}/blogs): Industry news and updates
+
+## Optional
+
+- [Refund Policy]({{ shop.url }}/policies/refund-policy)
+- [Privacy Policy]({{ shop.url }}/policies/privacy-policy)
+- [Terms of Service]({{ shop.url }}/policies/terms-of-service)
+- [Shipping Policy]({{ shop.url }}/policies/shipping-policy)
+{% endcapture %}{{ llms_content }}
