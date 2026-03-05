@@ -261,7 +261,7 @@
           href="{%- if customer -%}https://portal.reeftel.com/{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
           class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}"
           rel="nofollow"
-          style="flex-direction: column; gap: 0;"
+          style="position: relative;"
         >
           {%- if section.settings.enable_customer_avatar -%}
             <account-icon>
@@ -275,7 +275,7 @@
             <span class="svg-wrapper">{{ 'icon-account.svg' | inline_asset_content }}</span>
           {%- endif -%}
           <span aria-hidden="true"
-            style="font-size:0.6rem;font-weight:700;letter-spacing:0.05em;color:#6ddfda;line-height:1;margin-top:-0.6rem;">BETA</span>
+            style="position:absolute;bottom:0.2rem;left:50%;transform:translateX(-50%);font-size:0.55rem;font-weight:700;letter-spacing:0.04em;color:#6ddfda;line-height:1;white-space:nowrap;">BETA</span>
           <span class="visually-hidden">
             {%- liquid
               if customer
