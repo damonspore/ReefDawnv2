@@ -24,6 +24,8 @@
     endif
   -%}
   {%- paginate collections by paginate_by -%}
+    {%- if paginate.previous -%}<link rel="prev" href="{{ paginate.previous.url }}">{%- endif -%}
+    {%- if paginate.next -%}<link rel="next" href="{{ paginate.next.url }}">{%- endif -%}
     <ul
       class="collection-list grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"
       role="list"
