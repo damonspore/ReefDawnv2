@@ -77,12 +77,13 @@
       {% endcase %}
     </span>
     {%- render 'loading-spinner' -%}
+    {%- assign media_alt = media.alt | default: product.title | escape -%}
     <div class="product__media media media--transparent">
       {{
         media.preview_image
         | image_url: width: 1946
         | image_tag:
-          alt: media.alt | default: product.title | escape,
+          alt: media_alt,
           class: image_class,
           loading: lazy,
           sizes: sizes,
