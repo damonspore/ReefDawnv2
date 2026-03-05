@@ -261,21 +261,21 @@
           href="{%- if customer -%}https://portal.reeftel.com/{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
           class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}"
           rel="nofollow"
-          style="position: relative;"
+          style="flex-direction:column;gap:0;height:4.4rem;justify-content:center;"
         >
           {%- if section.settings.enable_customer_avatar -%}
             <account-icon>
               {%- if customer and customer.has_avatar? -%}
                 {{ customer | avatar }}
               {%- else -%}
-                <span class="svg-wrapper">{{ 'icon-account.svg' | inline_asset_content }}</span>
+                <span class="svg-wrapper" style="height:auto;">{{ 'icon-account.svg' | inline_asset_content }}</span>
               {%- endif -%}
             </account-icon>
           {%- else -%}
-            <span class="svg-wrapper">{{ 'icon-account.svg' | inline_asset_content }}</span>
+            <span class="svg-wrapper" style="height:auto;">{{ 'icon-account.svg' | inline_asset_content }}</span>
           {%- endif -%}
           <span aria-hidden="true"
-            style="position:absolute;bottom:0.4rem;left:50%;transform:translateX(-50%);font-size:0.55rem;font-weight:700;letter-spacing:0.04em;color:#6ddfda;line-height:1;white-space:nowrap;">BETA</span>
+            style="font-size:0.5rem;font-weight:700;letter-spacing:0.04em;color:#6ddfda;line-height:1;margin-top:-0.2rem;">Beta</span>
           <span class="visually-hidden">
             {%- liquid
               if customer
