@@ -33,41 +33,32 @@
 
   {%- liquid
     assign origin = request.origin
-    assign crumbs = ''
-  -%}
-
-  {%- liquid
-    if request.page_type == 'product'
-      if collection
-        assign breadcrumb_collection = collection
-      else
-        assign breadcrumb_collection = nil
-        for col in product.collections
-          assign col_handle = col.handle
-          assign first_char = col_handle | slice: 0
-          assign is_numeric_start = false
-          case first_char
-            when '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
-              assign is_numeric_start = true
-          endcase
-          if is_numeric_start
-            continue
-          endif
-          if col_handle == 'all' or col_handle == 'frontpage' or col_handle == 'featured-deals' or col_handle == 'new-arrivals' or col_handle == 'best-sellers' or col_handle == 'on-sale'
-            continue
-          endif
-          assign breadcrumb_collection = col
-          break
-        endfor
-        if breadcrumb_collection == nil
-          assign breadcrumb_collection = product.collections.first
-        endif
-      endif
-    endif
   -%}
 
   <nav class="breadcrumbs page-width" aria-label="Breadcrumb">
     {%- if request.page_type == 'product' -%}
+      {%- liquid
+        assign bc_col = collection
+        unless bc_col
+          for col in product.collections
+            assign col_url = col.url | downcase
+            if col_url contains product.type | downcase | handleize
+              assign bc_col = col
+              break
+            endif
+          endfor
+        endunless
+        unless bc_col
+          for col in product.collections
+            assign col_url = col.url | downcase
+            if col_url contains product.vendor | downcase | handleize
+              assign bc_col = col
+              break
+            endif
+          endfor
+        endunless
+      -%}
+
       <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -79,12 +70,12 @@
             "name": "Home",
             "item": {{ origin | json }}
           }
-          {%- if breadcrumb_collection -%}
+          {%- if bc_col -%}
             ,{
               "@type": "ListItem",
               "position": 2,
-              "name": {{ breadcrumb_collection.title | json }},
-              "item": {{ origin | append: breadcrumb_collection.url | json }}
+              "name": {{ bc_col.title | json }},
+              "item": {{ origin | append: bc_col.url | json }}
             }
             ,{
               "@type": "ListItem",
@@ -101,15 +92,48 @@
         ]
       }
       </script>
+
       <ol class="breadcrumbs__list" role="list">
         <li><a href="/">Home</a></li>
-        {%- if breadcrumb_collection -%}
+        {%- if bc_col -%}
           <li><span class="breadcrumbs__separator" aria-hidden="true">/</span></li>
-          <li><a href="{{ breadcrumb_collection.url }}">{{ breadcrumb_collection.title | escape }}</a></li>
+          <li><a href="{{ bc_col.url }}">{{ bc_col.title | escape }}</a></li>
         {%- endif -%}
         <li><span class="breadcrumbs__separator" aria-hidden="true">/</span></li>
         <li><span aria-current="page">{{ product.title | escape }}</span></li>
       </ol>
+
+      <script>
+        (function() {
+          var ref = document.referrer;
+          if (!ref) return;
+          try {
+            var url = new URL(ref);
+            if (url.origin !== window.location.origin) return;
+            var match = url.pathname.match(/^\/collections\/([^\/]+)/);
+            if (!match) return;
+            var colPath = '/collections/' + match[1];
+            var existing = document.querySelector('.breadcrumbs__list li a[href*="/collections/"]');
+            if (existing && existing.getAttribute('href') === colPath) return;
+            fetch(colPath + '.json')
+              .then(function(r) { return r.json(); })
+              .then(function(data) {
+                if (!data.collection || !data.collection.title) return;
+                var sep = '<li><span class="breadcrumbs__separator" aria-hidden="true">/</span></li>';
+                var link = '<li><a href="' + colPath + '">' + data.collection.title.replace(/</g, '&lt;') + '</a></li>';
+                var list = document.querySelector('.breadcrumbs__list');
+                if (!list) return;
+                if (existing) {
+                  existing.closest('li').previousElementSibling.remove();
+                  existing.closest('li').remove();
+                }
+                var home = list.querySelector('li:first-child');
+                home.insertAdjacentHTML('afterend', sep + link);
+              })
+              .catch(function() {});
+          } catch(e) {}
+        })();
+      </script>
 
     {%- elsif request.page_type == 'collection' -%}
       <script type="application/ld+json">
