@@ -557,6 +557,29 @@
               {%- endif -%}
             {%- endif -%}
           </small>
+
+          {%- assign free_shipping_threshold = 30000 -%}
+          {%- assign cart_total = cart.total_price -%}
+          {%- if cart != empty -%}
+            {%- if cart_total < free_shipping_threshold -%}
+              {%- assign remaining = free_shipping_threshold | minus: cart_total -%}
+              {%- assign progress = cart_total | times: 100 | divided_by: free_shipping_threshold -%}
+              <div style="margin-top: 1rem; padding: 0.8rem 1rem; background: rgba(var(--color-foreground), 0.04); border-radius: 4px;">
+                <p style="margin: 0 0 0.5rem; font-size: 1.2rem; text-align: center;">
+                  You're <strong>{{ remaining | money }}</strong> away from free shipping!
+                </p>
+                <div style="background: rgba(var(--color-foreground), 0.1); border-radius: 20px; height: 6px; overflow: hidden;">
+                  <div style="background: #6ddfda; height: 100%; width: {{ progress }}%; border-radius: 20px; transition: width 0.3s ease;"></div>
+                </div>
+              </div>
+            {%- else -%}
+              <div style="margin-top: 1rem; padding: 0.6rem 1rem; background: #e8f9f0; border-radius: 4px; text-align: center;">
+                <p style="margin: 0; font-size: 1.2rem; color: #1a7d45;">
+                  {{ 'icon-checkmark.svg' | inline_asset_content }} You've unlocked <strong>free shipping!</strong>
+                </p>
+              </div>
+            {%- endif -%}
+          {%- endif -%}
         </div>
 
         <!-- CTAs -->
@@ -575,6 +598,45 @@
             {{ 'sections.cart.checkout' | t }}
           </button>
         </div>
+
+        {%- if cart != empty -%}
+          {%- assign upsell_product = cart.items.first.product -%}
+          <div id="cart-drawer-recommendations" style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(var(--color-foreground), 0.08);">
+            <p style="font-size: 1.2rem; font-weight: 600; margin: 0 0 1rem; text-align: center;">You may also like</p>
+            <div id="cart-drawer-recs-content" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;"></div>
+          </div>
+          <script>
+            (function() {
+              var productId = {{ upsell_product.id | json }};
+              var cartItemIds = [{{ cart.items | map: 'product_id' | join: ',' }}];
+              fetch('/recommendations/products.json?product_id=' + productId + '&limit=4&intent=complementary')
+                .then(function(r) { return r.json(); })
+                .then(function(data) {
+                  var products = (data.products || []).filter(function(p) {
+                    return cartItemIds.indexOf(p.id) === -1;
+                  }).slice(0, 2);
+                  if (!products.length) return;
+                  var container = document.getElementById('cart-drawer-recs-content');
+                  if (!container) return;
+                  var html = '';
+                  products.forEach(function(p) {
+                    var img = p.featured_image ? p.featured_image : '';
+                    var price = (p.price / 100).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+                    html += '<a href="' + p.url + '" style="text-decoration:none;color:inherit;text-align:center;">';
+                    if (img) html += '<img src="' + img + '&width=200" alt="' + p.title.replace(/"/g, '&quot;') + '" loading="lazy" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:4px;">';
+                    html += '<p style="font-size:1.1rem;margin:0.5rem 0 0.2rem;line-height:1.3;">' + p.title + '</p>';
+                    html += '<p style="font-size:1.1rem;margin:0;color:rgba(var(--color-foreground),0.7);">' + price + '</p>';
+                    html += '</a>';
+                  });
+                  container.innerHTML = html;
+                })
+                .catch(function() {
+                  var el = document.getElementById('cart-drawer-recommendations');
+                  if (el) el.style.display = 'none';
+                });
+            })();
+          </script>
+        {%- endif -%}
       </div>
     </div>
   </div>

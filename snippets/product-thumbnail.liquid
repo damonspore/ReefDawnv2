@@ -82,6 +82,7 @@
         media.preview_image
         | image_url: width: 1946
         | image_tag:
+          alt: media.alt | default: product.title | escape,
           class: image_class,
           loading: lazy,
           sizes: sizes,

@@ -11,13 +11,24 @@
 </style>
 
 <div class="template-404 page-width page-margin center">
-  <p>
-    {{ 'templates.404.subtext' | t }}
-  </p>
   <h1 class="title">
     {{ 'templates.404.title' | t }}
   </h1>
-  <a href="{{ routes.all_products_collection_url }}" class="button">
-    {{ 'general.continue_shopping' | t }}
-  </a>
+  <p>
+    {{ 'templates.404.subtext' | t }}
+  </p>
+
+  <div style="max-width: 48rem; margin: 2rem auto;">
+    <form action="{{ routes.search_url }}" method="get" role="search" style="display: flex; gap: 0.8rem;">
+      <input type="search" name="q" placeholder="Search our store..." aria-label="Search" class="field__input" style="flex: 1;">
+      <button type="submit" class="button">Search</button>
+    </form>
+  </div>
+
+  <div style="margin-top: 2rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
+    <a href="{{ routes.all_products_collection_url }}" class="button">
+      {{ 'general.continue_shopping' | t }}
+    </a>
+    <a href="/pages/contact" class="button button--secondary">Contact Us</a>
+  </div>
 </div>
