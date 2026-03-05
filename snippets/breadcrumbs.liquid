@@ -38,7 +38,31 @@
 
   {%- liquid
     if request.page_type == 'product'
-      assign breadcrumb_collection = collection | default: product.collections.first
+      if collection
+        assign breadcrumb_collection = collection
+      else
+        assign breadcrumb_collection = nil
+        for col in product.collections
+          assign col_handle = col.handle
+          assign first_char = col_handle | slice: 0
+          assign is_numeric_start = false
+          case first_char
+            when '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
+              assign is_numeric_start = true
+          endcase
+          if is_numeric_start
+            continue
+          endif
+          if col_handle == 'all' or col_handle == 'frontpage' or col_handle == 'featured-deals' or col_handle == 'new-arrivals' or col_handle == 'best-sellers' or col_handle == 'on-sale'
+            continue
+          endif
+          assign breadcrumb_collection = col
+          break
+        endfor
+        if breadcrumb_collection == nil
+          assign breadcrumb_collection = product.collections.first
+        endif
+      endif
     endif
   -%}
 
