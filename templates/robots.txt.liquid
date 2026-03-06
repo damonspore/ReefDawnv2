@@ -21,6 +21,9 @@
 		{{- rule -}}
 	{% endfor %}
 
+	{%- if group.user_agent.value == '*' -%}
+	{%- endif -%}
+
 	{%- if group.user_agent.value == 'GPTBot' -%}
 		{{- 'Disallow: /admin' }}
 		{{- 'Disallow: /cart' }}
@@ -64,24 +67,12 @@
 		{{- 'Disallow: /account' }}
 	{%- endif -%}
 
-	{%- if group.user_agent.value == '*' -%}
-	{%- endif -%}
-
 	{%- if group.sitemap != blank -%}
 		{{ group.sitemap }}
 		{{- 'Sitemap: https://www.reeftel.com/apps/seo-sitemaps/1dedf0/articles-sitemap.xml' }}
 		{{- 'Sitemap: https://www.reeftel.com/apps/seo-sitemaps/1dedf0/pages-sitemap.xml' }}
 	{%- endif -%}
 {% endfor %}
-User-agent: cohere-ai
-Disallow: /admin
-Disallow: /cart
-Disallow: /orders
-Disallow: /checkouts/
-Disallow: /checkout
-Disallow: /carts
-Disallow: /account
-
 User-agent: oai-search
 Disallow: /a/downloads/-/*
 Disallow: /admin
@@ -237,3 +228,12 @@ Disallow: /.well-known/shopify/monorail
 Disallow: /cdn/wpm/*.js
 Disallow: /recommendations/products
 Disallow: /*/recommendations/products
+
+User-agent: cohere-ai
+Disallow: /admin
+Disallow: /cart
+Disallow: /orders
+Disallow: /checkouts/
+Disallow: /checkout
+Disallow: /carts
+Disallow: /account
