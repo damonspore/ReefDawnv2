@@ -21,6 +21,49 @@
 		{{- rule -}}
 	{% endfor %}
 
+	{%- if group.user_agent.value == 'GPTBot' -%}
+		{{- 'Disallow: /admin' }}
+		{{- 'Disallow: /cart' }}
+		{{- 'Disallow: /orders' }}
+		{{- 'Disallow: /checkouts/' }}
+		{{- 'Disallow: /checkout' }}
+		{{- 'Disallow: /carts' }}
+		{{- 'Disallow: /account' }}
+		{{- 'Disallow: /search' }}
+		{{- 'Disallow: /policies/' }}
+		{{- 'Disallow: /*/policies/' }}
+	{%- endif -%}
+
+	{%- if group.user_agent.value == 'Google-Extended' -%}
+		{{- 'Disallow: /admin' }}
+		{{- 'Disallow: /cart' }}
+		{{- 'Disallow: /orders' }}
+		{{- 'Disallow: /checkouts/' }}
+		{{- 'Disallow: /checkout' }}
+		{{- 'Disallow: /carts' }}
+		{{- 'Disallow: /account' }}
+	{%- endif -%}
+
+	{%- if group.user_agent.value == 'PerplexityBot' -%}
+		{{- 'Disallow: /admin' }}
+		{{- 'Disallow: /cart' }}
+		{{- 'Disallow: /orders' }}
+		{{- 'Disallow: /checkouts/' }}
+		{{- 'Disallow: /carts' }}
+		{{- 'Disallow: /account' }}
+		{{- 'Disallow: /search' }}
+	{%- endif -%}
+
+	{%- if group.user_agent.value == 'Applebot-Extended' -%}
+		{{- 'Disallow: /admin' }}
+		{{- 'Disallow: /cart' }}
+		{{- 'Disallow: /orders' }}
+		{{- 'Disallow: /checkouts/' }}
+		{{- 'Disallow: /checkout' }}
+		{{- 'Disallow: /carts' }}
+		{{- 'Disallow: /account' }}
+	{%- endif -%}
+
 	{%- if group.user_agent.value == '*' -%}
 	{%- endif -%}
 
@@ -30,6 +73,15 @@
 		{{- 'Sitemap: https://www.reeftel.com/apps/seo-sitemaps/1dedf0/pages-sitemap.xml' }}
 	{%- endif -%}
 {% endfor %}
+User-agent: cohere-ai
+Disallow: /admin
+Disallow: /cart
+Disallow: /orders
+Disallow: /checkouts/
+Disallow: /checkout
+Disallow: /carts
+Disallow: /account
+
 User-agent: oai-search
 Disallow: /a/downloads/-/*
 Disallow: /admin
@@ -185,52 +237,3 @@ Disallow: /.well-known/shopify/monorail
 Disallow: /cdn/wpm/*.js
 Disallow: /recommendations/products
 Disallow: /*/recommendations/products
-
-User-agent: GPTBot
-Disallow: /admin
-Disallow: /cart
-Disallow: /orders
-Disallow: /checkouts/
-Disallow: /checkout
-Disallow: /carts
-Disallow: /account
-Disallow: /search
-Disallow: /policies/
-Disallow: /*/policies/
-
-User-agent: Google-Extended
-Disallow: /admin
-Disallow: /cart
-Disallow: /orders
-Disallow: /checkouts/
-Disallow: /checkout
-Disallow: /carts
-Disallow: /account
-
-User-agent: PerplexityBot
-Disallow: /admin
-Disallow: /cart
-Disallow: /orders
-Disallow: /checkouts/
-Disallow: /checkout
-Disallow: /carts
-Disallow: /account
-Disallow: /search
-
-User-agent: Applebot-Extended
-Disallow: /admin
-Disallow: /cart
-Disallow: /orders
-Disallow: /checkouts/
-Disallow: /checkout
-Disallow: /carts
-Disallow: /account
-
-User-agent: cohere-ai
-Disallow: /admin
-Disallow: /cart
-Disallow: /orders
-Disallow: /checkouts/
-Disallow: /checkout
-Disallow: /carts
-Disallow: /account
