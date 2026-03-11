@@ -33,6 +33,10 @@
       <meta name="description" content="{{ shop.description | escape }}">
     {% endif %}
 
+    {% if customer %}
+    <meta name="reef-customer" content='{"id":"{{ customer.id }}","email":"{{ customer.email }}","name":"{{ customer.first_name }} {{ customer.last_name }}"}'>
+    {% endif %}
+
     {% render 'meta-tags' %}
 
     <script src="{{ 'constants.aio.min.js' | asset_url }}" defer="defer"></script>
