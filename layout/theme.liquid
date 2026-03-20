@@ -310,24 +310,6 @@
       }
     </script>
 
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-N6DTX7RB');</script>
-    <!-- End Google Tag Manager -->
-
-    <!-- Google Merchant Widget -->
-    <script id="merchantWidgetScript" src="https://www.gstatic.com/shopping/merchant/merchantwidget.js" defer></script>
-    <script defer>
-    document.getElementById('merchantWidgetScript').addEventListener('load', function() {
-      merchantwidget.start({ position: 'LEFT_BOTTOM' });
-    });
-    </script>
-
-    <script defer src="https://pulse.clickguard.com/s/acckAP4GwR7nH/astpgO3BPIbQJ"></script>
-
     {%- render 'avada-seo-local-business' -%}
   </head>
 
@@ -410,9 +392,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.aio.min.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
-<script src="https://erp.reeftel.com/livechat-widget.js" defer></script>
-<!-- Start of HubSpot Embed Code -->
-  <script type="text/javascript" id="hs-script-loader" async defer src="//js-na1.hs-scripts.com/44463327.js"></script>
-<!-- End of HubSpot Embed Code -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N6DTX7RB');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google Merchant Widget -->
+    <script id="merchantWidgetScript" src="https://www.gstatic.com/shopping/merchant/merchantwidget.js" defer></script>
+    <script defer>
+    document.getElementById('merchantWidgetScript').addEventListener('load', function() {
+      merchantwidget.start({ position: 'LEFT_BOTTOM' });
+    });
+    </script>
+
+    <script defer src="https://pulse.clickguard.com/s/acckAP4GwR7nH/astpgO3BPIbQJ"></script>
+    <script src="https://erp.reeftel.com/livechat-widget.js" defer></script>
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async defer src="//js-na1.hs-scripts.com/44463327.js"></script>
+    <!-- End of HubSpot Embed Code -->
   </body>
 </html>
