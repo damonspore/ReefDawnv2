@@ -28,22 +28,12 @@
             "button_link_2": "shopify:\/\/pages\/mission",
             "button_style_secondary_2": true
           }
-        },
-        "trust_badges_hero": {
-          "type": "trust_badges",
-          "settings": {
-            "badge_1": "\uD83D\uDEE1\uFE0F 10-Year Warranty",
-            "badge_2": "\uD83D\uDE9A Free Shipping $300+",
-            "badge_3": "\u2B50 Trustpilot 4.6\/5",
-            "badge_4": "\uD83D\uDD12 Secure Checkout"
-          }
         }
       },
       "block_order": [
         "heading",
         "text_4NJnPc",
-        "button",
-        "trust_badges_hero"
+        "button"
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/vibrant-coral-reef-word-spelled-colorful-textured-corals-surrounded-marine.webp",
