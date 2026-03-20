@@ -21,6 +21,21 @@
   {% render 'card-product', show_vendor: section.settings.show_vendor %}
 {% endcomment %}
 {%- unless skip_styles -%}
+  <style>
+    .card-wrapper {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card-wrapper:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
+    .badge--shipping {
+      background: rgb(var(--color-foreground));
+      color: rgb(var(--color-background));
+      font-size: 1rem;
+      margin-top: 0.4rem;
+    }
+  </style>
   <link rel="stylesheet" href="{{ 'component-rating.aio.min.css' | asset_url }}" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="{{ 'component-volume-pricing.aio.min.css' | asset_url }}" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="{{ 'component-price.aio.min.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -557,12 +572,16 @@
             </span>
           {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
             {%- assign card_savings_percent = card_product.compare_at_price | minus: card_product.price | times: 100.0 | divided_by: card_product.compare_at_price | round -%}
+            {%- assign card_savings_amount = card_product.compare_at_price | minus: card_product.price | money -%}
             <span
               id="Badge-{{ section_id }}-{{ card_product.id }}"
               class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
             >
-              -{{ card_savings_percent }}%
+              Save {{ card_savings_percent }}% ({{ card_savings_amount }})
             </span>
+          {%- endif -%}
+          {%- if card_product.available and card_product.price >= 30000 -%}
+            <span class="badge badge--bottom-left badge--shipping">Free Shipping</span>
           {%- endif -%}
         </div>
       </div>
