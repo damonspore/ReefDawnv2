@@ -1,6 +1,6 @@
 # ReefDawnv2 execution plan
 
-**Status:** Phase 1 in progress / completed (see git history). **Target repo:** **ReefDawnv2** on GitHub.
+**Status:** Phase 1 completed (see git history). **Canonical repo:** [github.com/damonspore/ReefDawnv2](https://github.com/damonspore/ReefDawnv2) (`git remote` name `origin`).
 
 ## Decisions
 
@@ -20,5 +20,6 @@
 
 ## Publish to GitHub
 
-- Add remote `ReefDawnv2`, push `main`.
+- **Done:** Repository created; default remote `origin` → `https://github.com/damonspore/ReefDawnv2.git`. Legacy remote preserved as `reefclaude` → ReefClaudeTheme.
+- **Branches:** `dev/seo-cro` has Phase 1 work (ahead of older `master` on that line); align default branch / merge in GitHub as you prefer.
 - Confirm no secrets in theme files.

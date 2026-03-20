@@ -2,6 +2,8 @@
 
 Shopify **Dawn**–based theme for **Reef Telecom** (reeftel.com): “aquatic premium” design system, conversion-focused templates, and native SEO (Avada SEO removed).
 
+**Repository:** [github.com/damonspore/ReefDawnv2](https://github.com/damonspore/ReefDawnv2) (`origin`). The older **ReefClaudeTheme** remote is kept locally as `reefclaude` if you still need it.
+
 ## Spec
 
 Product and UX requirements live in the author’s prompt file (reeftel-dawn-reimagine). Implementation follows eight phases: design foundation → global chrome → homepage → collection/card → PDP → SEO polish → supporting pages → QA.
