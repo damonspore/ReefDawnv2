@@ -1,55 +1,63 @@
-{% comment %}
-  ============================================================
-  REEF TELECOM — Trust Strip v2 (Below Add to Cart)
-  ============================================================
-
-  INSTALLATION:
-  1. In Shopify Admin → Online Store → Themes → Edit Code
-  2. Go to the "Snippets" folder → click "Add a new snippet"
-  3. Name it: reef-trust-strip
-  4. Paste this entire file contents
-  5. Save
-
-  6. Open your main product template section
-     (usually sections/main-product.liquid or sections/product-template.liquid)
-  7. Find the Add to Cart / Buy button area
-     (search for "product-form" or "button" with "add to cart")
-  8. BELOW the closing tag of the product form, add:
-     {% render 'reef-trust-strip' %}
-  9. Save and preview
-
-  COLOR NOTE:
-  - The accent color #5BBAD5 is a robin's egg / light blue to match
-    your ATC button. If your exact hex is different, do a find-and-replace
-    on #5BBAD5 with your actual button hex code.
-  - The Trustpilot green #00B67A is their official brand color.
-
-  TRUSTPILOT:
-  - Links to your Trustpilot page: trustpilot.com/review/reeftel.com
-  - Update the review count number periodically (currently 924)
-  - Star rating is hardcoded at 4.6 — update if it changes
-
-  NOTES:
-  - All styles scoped with .reef-trust-strip to avoid theme conflicts
-  - Uses inline <style> so no separate CSS file needed
-  - Icons are pure inline SVG — zero external dependencies
-  - Fully responsive (stacks cleanly on mobile)
-  ============================================================
-{% endcomment %}
-
 <style>
+  .reef-trust-strip-wrap {
+    margin: 16px 0 12px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  /* Warranty highlight banner */
+  .reef-trust-strip__warranty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, #e8f6fb 0%, #d4eff8 100%);
+    border: 1px solid #5BBAD5;
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .reef-trust-strip__warranty-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .reef-trust-strip__warranty-icon svg {
+    width: 22px;
+    height: 22px;
+    display: block;
+  }
+
+  .reef-trust-strip__warranty-text {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #1a6b8a;
+    letter-spacing: 0.02em;
+  }
+
+  .reef-trust-strip__warranty-sub {
+    font-size: 11.5px;
+    font-weight: 500;
+    color: #3a8aaa;
+    margin-left: 4px;
+  }
+
+  /* Trust signals row */
   .reef-trust-strip {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 6px 14px;
-    margin: 16px 0 12px;
-    padding: 14px 16px;
+    padding: 12px 16px;
     border: 1px solid #c4e1ed;
-    border-radius: 8px;
+    border-top: 1px solid #d4e8f0;
+    border-radius: 0 0 8px 8px;
     background: linear-gradient(135deg, #f0f8fc 0%, #f7fbfd 100%);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
 
   .reef-trust-strip__item {
@@ -90,6 +98,7 @@
     font-weight: 600;
   }
 
+  /* Trustpilot link */
   .reef-trust-strip__trustpilot-link {
     display: flex;
     align-items: center;
@@ -106,12 +115,6 @@
     opacity: 0.8;
   }
 
-  .reef-trust-strip__tp-stars {
-    display: flex;
-    align-items: center;
-    gap: 1px;
-  }
-
   .reef-trust-strip__tp-score {
     font-weight: 600;
     color: #1a3344;
@@ -124,7 +127,14 @@
     font-size: 11px;
   }
 
+  /* Responsive */
   @media (max-width: 520px) {
+    .reef-trust-strip__warranty-text {
+      font-size: 12.5px;
+    }
+    .reef-trust-strip__warranty-sub {
+      font-size: 10.5px;
+    }
     .reef-trust-strip {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -148,22 +158,40 @@
   }
 </style>
 
-<div class="reef-trust-strip">
+<div class="reef-trust-strip-wrap">
 
-  {%- comment -%} Trustpilot — links to review page {%- endcomment -%}
-  <div class="reef-trust-strip__item reef-trust-strip__item--trustpilot-wrap">
-    <a class="reef-trust-strip__trustpilot-link"
-       href="https://www.trustpilot.com/review/reeftel.com"
-       target="_blank"
-       rel="noopener noreferrer"
-       aria-label="Reef Telecom Trustpilot reviews — 4.6 out of 5 stars from 924 reviews">
-      <span class="reef-trust-strip__icon">
-        <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M9 1.5l2.47 5.01L17 7.34l-4 3.9.94 5.51L9 14.01l-4.94 2.74.94-5.51-4-3.9 5.53-.83L9 1.5z" fill="#00B67A"/>
-          <path d="M12.09 12.42L9 14.01l-4.94 2.74.94-5.51L9 10.5l3.09 1.92z" fill="#005128"/>
-        </svg>
-      </span>
-      <span class="reef-trust-strip__tp-stars">
+  {%- comment -%} Warranty highlight banner {%- endcomment -%}
+  <div class="reef-trust-strip__warranty">
+    <span class="reef-trust-strip__warranty-icon">
+      <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11 1.5L3 5v6c0 5.25 3.4 10.15 8 11.5 4.6-1.35 8-6.25 8-11.5V5l-8-3.5z" fill="#5BBAD5" stroke="#3a9abc" stroke-width=".8"/>
+        <path d="M8.5 11.5l2 2 3.5-4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+    <span class="reef-trust-strip__warranty-text">
+      Industry-Leading 10-Year Warranty
+    </span>
+    <span class="reef-trust-strip__warranty-sub">
+      — Included with every purchase
+    </span>
+  </div>
+
+  {%- comment -%} Trust signals row {%- endcomment -%}
+  <div class="reef-trust-strip">
+
+    {%- comment -%} Trustpilot {%- endcomment -%}
+    <div class="reef-trust-strip__item reef-trust-strip__item--trustpilot-wrap">
+      <a class="reef-trust-strip__trustpilot-link"
+         href="https://www.trustpilot.com/review/reeftel.com"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="Reef Telecom Trustpilot reviews — 4.6 out of 5 stars from 924 reviews">
+        <span class="reef-trust-strip__icon">
+          <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 1.5l2.47 5.01L17 7.34l-4 3.9.94 5.51L9 14.01l-4.94 2.74.94-5.51-4-3.9 5.53-.83L9 1.5z" fill="#00B67A"/>
+            <path d="M12.09 12.42L9 14.01l-4.94 2.74.94-5.51L9 10.5l3.09 1.92z" fill="#005128"/>
+          </svg>
+        </span>
         <svg width="60" height="12" viewBox="0 0 60 12" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="0" y="0" width="11" height="11" rx="1" fill="#00B67A"/><path d="M5.5 1.8l1.2 2.5 2.7.4-2 1.9.5 2.7-2.4-1.3-2.4 1.3.5-2.7-2-1.9 2.7-.4 1.2-2.5z" fill="#fff"/>
           <rect x="12.5" y="0" width="11" height="11" rx="1" fill="#00B67A"/><path d="M18 1.8l1.2 2.5 2.7.4-2 1.9.5 2.7-2.4-1.3-2.4 1.3.5-2.7-2-1.9 2.7-.4 1.2-2.5z" fill="#fff"/>
@@ -171,65 +199,66 @@
           <rect x="37.5" y="0" width="11" height="11" rx="1" fill="#00B67A"/><path d="M43 1.8l1.2 2.5 2.7.4-2 1.9.5 2.7-2.4-1.3-2.4 1.3.5-2.7-2-1.9 2.7-.4 1.2-2.5z" fill="#fff"/>
           <rect x="50" y="0" width="11" height="11" rx="1" fill="#DCDCE6"/><rect x="50" y="0" width="6.6" height="11" rx="1" fill="#00B67A"/><path d="M55.5 1.8l1.2 2.5 2.7.4-2 1.9.5 2.7-2.4-1.3-2.4 1.3.5-2.7-2-1.9 2.7-.4 1.2-2.5z" fill="#fff"/>
         </svg>
+        <span class="reef-trust-strip__tp-score">4.6</span>
+        <span class="reef-trust-strip__tp-count">(924 reviews)</span>
+      </a>
+    </div>
+
+    <span class="reef-trust-strip__divider" aria-hidden="true"></span>
+
+    {%- comment -%} Google Top Quality Store {%- endcomment -%}
+    <div class="reef-trust-strip__item reef-trust-strip__item--google">
+      <span class="reef-trust-strip__icon">
+        <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 1.5l2.1 4.3 4.7.7-3.4 3.3.8 4.7L9 12.2 4.8 14.5l.8-4.7L2.2 6.5l4.7-.7L9 1.5z" fill="#5BBAD5" stroke="#5BBAD5" stroke-width=".8" stroke-linejoin="round"/>
+          <path d="M7.5 9.2l1.2 1.2 2.5-2.8" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </span>
-      <span class="reef-trust-strip__tp-score">4.6</span>
-      <span class="reef-trust-strip__tp-count">(924 reviews)</span>
-    </a>
-  </div>
+      Google Top Quality Store
+    </div>
 
-  <span class="reef-trust-strip__divider" aria-hidden="true"></span>
+    <span class="reef-trust-strip__divider" aria-hidden="true"></span>
 
-  {%- comment -%} Google Top Quality Store {%- endcomment -%}
-  <div class="reef-trust-strip__item reef-trust-strip__item--google">
-    <span class="reef-trust-strip__icon">
-      <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M9 1.5l2.1 4.3 4.7.7-3.4 3.3.8 4.7L9 12.2 4.8 14.5l.8-4.7L2.2 6.5l4.7-.7L9 1.5z" fill="#5BBAD5" stroke="#5BBAD5" stroke-width=".8" stroke-linejoin="round"/>
-        <path d="M7.5 9.2l1.2 1.2 2.5-2.8" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </span>
-    Google Top Quality Store
-  </div>
+    {%- comment -%} Fast Shipping {%- endcomment -%}
+    <div class="reef-trust-strip__item">
+      <span class="reef-trust-strip__icon">
+        <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="5" width="10" height="8" rx="1" stroke="#5BBAD5" stroke-width="1.2"/>
+          <path d="M11 8h3l2.5 2.5V13h-2" stroke="#5BBAD5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="5" cy="13.5" r="1.5" stroke="#5BBAD5" stroke-width="1.2"/>
+          <circle cx="14" cy="13.5" r="1.5" stroke="#5BBAD5" stroke-width="1.2"/>
+        </svg>
+      </span>
+      Fast Shipping
+    </div>
 
-  <span class="reef-trust-strip__divider" aria-hidden="true"></span>
+    <span class="reef-trust-strip__divider" aria-hidden="true"></span>
 
-  {%- comment -%} Fast Shipping {%- endcomment -%}
-  <div class="reef-trust-strip__item">
-    <span class="reef-trust-strip__icon">
-      <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="1" y="5" width="10" height="8" rx="1" stroke="#5BBAD5" stroke-width="1.2"/>
-        <path d="M11 8h3l2.5 2.5V13h-2" stroke="#5BBAD5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="5" cy="13.5" r="1.5" stroke="#5BBAD5" stroke-width="1.2"/>
-        <circle cx="14" cy="13.5" r="1.5" stroke="#5BBAD5" stroke-width="1.2"/>
-      </svg>
-    </span>
-    Fast Shipping
-  </div>
+    {%- comment -%} Easy Returns {%- endcomment -%}
+    <div class="reef-trust-strip__item">
+      <span class="reef-trust-strip__icon">
+        <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 7h7a4 4 0 010 8H8" stroke="#5BBAD5" stroke-width="1.2" stroke-linecap="round"/>
+          <path d="M7 4L4 7l3 3" stroke="#5BBAD5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      Easy Returns
+    </div>
 
-  <span class="reef-trust-strip__divider" aria-hidden="true"></span>
+    <span class="reef-trust-strip__divider" aria-hidden="true"></span>
 
-  {%- comment -%} Easy Returns {%- endcomment -%}
-  <div class="reef-trust-strip__item">
-    <span class="reef-trust-strip__icon">
-      <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M4 7h7a4 4 0 010 8H8" stroke="#5BBAD5" stroke-width="1.2" stroke-linecap="round"/>
-        <path d="M7 4L4 7l3 3" stroke="#5BBAD5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </span>
-    Easy Returns
-  </div>
+    {%- comment -%} Secure Checkout {%- endcomment -%}
+    <div class="reef-trust-strip__item">
+      <span class="reef-trust-strip__icon">
+        <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3.5" y="8" width="11" height="7.5" rx="1.5" stroke="#5BBAD5" stroke-width="1.2"/>
+          <path d="M6 8V5.5a3 3 0 016 0V8" stroke="#5BBAD5" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="9" cy="12" r="1.2" fill="#5BBAD5"/>
+        </svg>
+      </span>
+      Secure Checkout
+    </div>
 
-  <span class="reef-trust-strip__divider" aria-hidden="true"></span>
-
-  {%- comment -%} Secure Checkout {%- endcomment -%}
-  <div class="reef-trust-strip__item">
-    <span class="reef-trust-strip__icon">
-      <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="3.5" y="8" width="11" height="7.5" rx="1.5" stroke="#5BBAD5" stroke-width="1.2"/>
-        <path d="M6 8V5.5a3 3 0 016 0V8" stroke="#5BBAD5" stroke-width="1.2" stroke-linecap="round"/>
-        <circle cx="9" cy="12" r="1.2" fill="#5BBAD5"/>
-      </svg>
-    </span>
-    Secure Checkout
   </div>
 
 </div>
