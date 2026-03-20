@@ -36,6 +36,28 @@
   }
 {%- endstyle -%}
 
+{%- if collection.products.size > 0 -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": {{ collection.title | json }},
+    "url": {{ request.origin | append: collection.url | json }},
+    "numberOfItems": {{ collection.products_count }},
+    "itemListElement": [
+      {%- for product in collection.products limit: section.settings.products_per_page -%}
+        {
+          "@type": "ListItem",
+          "position": {{ forloop.index }},
+          "name": {{ product.title | json }},
+          "url": {{ request.origin | append: product.url | json }}
+        }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ]
+  }
+  </script>
+{%- endif -%}
+
 <div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
   {%- paginate collection.products by section.settings.products_per_page -%}
     {%- if paginate.previous -%}<link rel="prev" href="{{ paginate.previous.url }}">{%- endif -%}
