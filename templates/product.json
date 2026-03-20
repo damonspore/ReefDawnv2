@@ -41,6 +41,7 @@
         },
         "icon_with_text_WYarcw": {
           "type": "icon-with-text",
+          "disabled": true,
           "settings": {
             "layout": "vertical",
             "icon_1": "star",
