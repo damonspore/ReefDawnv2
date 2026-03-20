@@ -67,6 +67,7 @@
         },
         "26c38253-4e8d-4bea-aac9-b6b6b002d032": {
           "type": "icon-with-text",
+          "disabled": true,
           "settings": {
             "layout": "vertical",
             "icon_1": "truck",
