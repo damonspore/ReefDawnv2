@@ -27,18 +27,6 @@
           "type": "price",
           "settings": {}
         },
-        "26c38253-4e8d-4bea-aac9-b6b6b002d032": {
-          "type": "icon-with-text",
-          "settings": {
-            "layout": "vertical",
-            "icon_1": "truck",
-            "heading_1": "Free Ground Shipping Over $300",
-            "icon_2": "fire",
-            "heading_2": "Industry-Leading <strong>10 Year Warranty</strong>",
-            "icon_3": "stopwatch",
-            "heading_3": "Same-Day Shipping Before 4PM EST"
-          }
-        },
         "icon_with_text_WYarcw": {
           "type": "icon-with-text",
           "disabled": true,
@@ -54,6 +42,7 @@
         },
         "custom_liquid_pc8epP": {
           "type": "custom_liquid",
+          "disabled": true,
           "settings": {
             "custom_liquid": "<!-- TrustBox widget - Micro Combo -->\n<div class=\"trustpilot-widget\" data-locale=\"en-US\" data-template-id=\"5419b6ffb0d04a076446a9af\" data-businessunit-id=\"65c538d1df194ffd531897a2\" data-style-height=\"20px\" data-style-width=\"100%\" data-theme=\"light\">\n  <a href=\"https://www.trustpilot.com/review/reeftel.com\" target=\"_blank\" rel=\"noopener\">Trustpilot</a>\n</div>\n<!-- End TrustBox widget -->"
           }
@@ -74,6 +63,18 @@
           "settings": {
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": false
+          }
+        },
+        "26c38253-4e8d-4bea-aac9-b6b6b002d032": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "vertical",
+            "icon_1": "truck",
+            "heading_1": "Free Ground Shipping Over $300",
+            "icon_2": "fire",
+            "heading_2": "Industry-Leading <strong>10 Year Warranty</strong>",
+            "icon_3": "stopwatch",
+            "heading_3": "Same-Day Shipping Before 4PM EST"
           }
         },
         "collapsible_description_liquid": {
@@ -114,12 +115,12 @@
         "vendor",
         "title",
         "price",
-        "26c38253-4e8d-4bea-aac9-b6b6b002d032",
         "icon_with_text_WYarcw",
         "custom_liquid_pc8epP",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
+        "26c38253-4e8d-4bea-aac9-b6b6b002d032",
         "collapsible_description_liquid",
         "collapsible_specs_liquid",
         "collapsible_shipping",
