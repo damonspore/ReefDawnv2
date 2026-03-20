@@ -760,18 +760,36 @@
       {%- if current_variant.barcode != blank -%}
         "gtin": {{ current_variant.barcode | json }},
       {%- endif -%}
-      "offers": {
-        "@type": "Offer",
-        "url": {{ request.origin | append: product.url | json }},
-        "priceCurrency": {{ cart.currency.iso_code | json }},
-        "price": {{ current_variant.price | divided_by: 100.0 | json }},
-        "priceValidUntil": "{{ 'now' | date: '%Y' | plus: 1 }}-12-31",
-        "availability": "https://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}",
-        "seller": {
-          "@type": "Organization",
-          "name": {{ shop.name | json }}
+      {%- if product.variants.size > 1 -%}
+        {%- assign min_price = product.price_min | divided_by: 100.0 -%}
+        {%- assign max_price = product.price_max | divided_by: 100.0 -%}
+        "offers": {
+          "@type": "AggregateOffer",
+          "url": {{ request.origin | append: product.url | json }},
+          "priceCurrency": {{ cart.currency.iso_code | json }},
+          "lowPrice": {{ min_price | json }},
+          "highPrice": {{ max_price | json }},
+          "offerCount": {{ product.variants.size | json }},
+          "availability": "https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+          "seller": {
+            "@type": "Organization",
+            "name": {{ shop.name | json }}
+          }
         }
-      }
+      {%- else -%}
+        "offers": {
+          "@type": "Offer",
+          "url": {{ request.origin | append: product.url | json }},
+          "priceCurrency": {{ cart.currency.iso_code | json }},
+          "price": {{ current_variant.price | divided_by: 100.0 | json }},
+          "priceValidUntil": "{{ 'now' | date: '%Y' | plus: 1 }}-12-31",
+          "availability": "https://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}",
+          "seller": {
+            "@type": "Organization",
+            "name": {{ shop.name | json }}
+          }
+        }
+      {%- endif -%}
     }
     </script>
   </div>
