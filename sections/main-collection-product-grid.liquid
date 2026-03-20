@@ -167,6 +167,9 @@
             class="collection{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
           >
             <div class="loading-overlay gradient"></div>
+            <div class="collection__product-count" style="display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; margin-bottom: 0.5rem; font-size: 1.3rem; color: rgba(var(--color-foreground), 0.6);">
+              <span>Showing {{ collection.products_count }} of {{ collection.all_products_count }} products</span>
+            </div>
             <ul
               id="product-grid"
               data-id="{{ section.id }}"

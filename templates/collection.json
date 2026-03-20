@@ -17,6 +17,49 @@
         "color_scheme": "background-1"
       }
     },
+    "collection_trust_strip": {
+      "type": "trust-strip",
+      "blocks": {
+        "ct_warranty": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "\uD83D\uDEE1\uFE0F",
+            "label": "10-Year Warranty",
+            "detail": ""
+          }
+        },
+        "ct_shipping": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "\uD83D\uDE9A",
+            "label": "Free Shipping $300+",
+            "detail": ""
+          }
+        },
+        "ct_reviews": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "\u2B50",
+            "label": "Trustpilot 4.6\/5",
+            "detail": ""
+          }
+        },
+        "ct_secure": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "\uD83D\uDD12",
+            "label": "Secure Checkout",
+            "detail": ""
+          }
+        }
+      },
+      "block_order": ["ct_warranty", "ct_shipping", "ct_reviews", "ct_secure"],
+      "settings": {
+        "color_scheme": "accent-1",
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
@@ -39,6 +82,7 @@
   },
   "order": [
     "banner",
+    "collection_trust_strip",
     "product-grid"
   ]
 }
