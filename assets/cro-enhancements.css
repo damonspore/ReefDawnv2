@@ -1,0 +1,115 @@
+/* CRO Enhancement Styles */
+
+/* Card hover lift effect */
+.card-wrapper {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-wrapper:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Button hover micro-interactions */
+.button:not(.button--tertiary) {
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.button:not(.button--tertiary):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+.button:not(.button--tertiary):active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Badge animations */
+.badge {
+  transition: transform 0.2s ease;
+}
+.card-wrapper:hover .badge {
+  transform: scale(1.05);
+}
+
+/* Shipping progress bar animation */
+.cart-drawer__shipping-bar {
+  animation: fadeInUp 0.3s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Trust strip subtle entrance */
+.trust-strip__item {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.trust-strip:hover .trust-strip__item {
+  transform: translateY(-1px);
+}
+
+/* Improved focus states for accessibility */
+.button:focus-visible,
+.card-wrapper a:focus-visible {
+  outline: 2px solid rgba(var(--color-foreground), 0.5);
+  outline-offset: 3px;
+}
+
+/* WCAG AA contrast: ensure badge text is readable */
+.badge--shipping {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* Mobile responsive adjustments */
+@media screen and (max-width: 749px) {
+  .card-wrapper:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .trust-strip__inner {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .product__benefits-strip {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .cart-drawer__trust {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .collection__product-count {
+    font-size: 1.1rem;
+  }
+}
+
+/* Tablet responsive */
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  .trust-strip__inner {
+    gap: 1.5rem 2rem;
+  }
+
+  .banner__trust-badges {
+    gap: 0.6rem;
+  }
+}
+
+/* Large desktop */
+@media screen and (min-width: 1200px) {
+  .trust-strip__inner {
+    gap: 2rem 4rem;
+  }
+}
