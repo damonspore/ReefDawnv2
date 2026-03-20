@@ -272,7 +272,10 @@
     },
     "404": {
       "title": "Page not found",
-      "subtext": "404"
+      "subtext": "404",
+      "search_placeholder": "Search our store...",
+      "search_button": "Search",
+      "contact_us": "Contact Us"
     }
   },
   "sections": {
