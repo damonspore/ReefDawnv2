@@ -5,6 +5,13 @@
   {% render 'header-drawer' %}
 {% endcomment %}
 
+<style>
+  .menu-drawer__menu-item {
+    min-height: 4.8rem;
+    display: flex;
+    align-items: center;
+  }
+</style>
 <header-drawer data-breakpoint="{% if section.settings.menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}">
   <details id="Details-menu-drawer-container" class="menu-drawer-container">
     <summary
@@ -19,6 +26,9 @@
     <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ section.settings.menu_color_scheme }}">
       <div class="menu-drawer__inner-container">
         <div class="menu-drawer__navigation-container">
+          <div class="menu-drawer__promo" style="padding: 0.8rem 1.5rem; background: rgba(var(--color-foreground), 0.04); text-align: center; font-size: 1.2rem; font-weight: 600; border-bottom: 1px solid rgba(var(--color-foreground), 0.06);">
+            🚚 Free Shipping on Orders $300+ &nbsp;|&nbsp; 🛡️ 10-Year Warranty
+          </div>
           <nav class="menu-drawer__navigation">
             <ul class="menu-drawer__menu has-submenu list-menu" role="list">
               {%- for link in section.settings.menu.links -%}
@@ -196,7 +206,12 @@
               </div>
             {%- endif -%}
             <ul class="list list-social list-unstyled" role="list">
-              {%- if settings.social_twitter_link != blank -%}
+              <li class="menu-drawer__trust-badges" style="list-style: none; display: flex; gap: 1.2rem; justify-content: center; padding: 1rem 0; margin-bottom: 0.5rem; border-bottom: 1px solid rgba(var(--color-foreground), 0.06); font-size: 1.1rem;">
+              <span>🛡️ Warranty</span>
+              <span>🔒 Secure</span>
+              <span>⭐ 4.6/5</span>
+            </li>
+            {%- if settings.social_twitter_link != blank -%}
                 <li class="list-social__item">
                   <a href="{{ settings.social_twitter_link }}" class="list-social__link link">
                     <span class="svg-wrapper">
