@@ -166,11 +166,58 @@
                 </a>
               {%- endif -%}
             </div>
+          {%- when 'trust_badges' -%}
+            <div class="banner__trust-badges" {{ block.shopify_attributes }}>
+              {%- if block.settings.badge_1 != blank -%}
+                <span class="banner__trust-badge">{{ block.settings.badge_1 }}</span>
+              {%- endif -%}
+              {%- if block.settings.badge_2 != blank -%}
+                <span class="banner__trust-badge">{{ block.settings.badge_2 }}</span>
+              {%- endif -%}
+              {%- if block.settings.badge_3 != blank -%}
+                <span class="banner__trust-badge">{{ block.settings.badge_3 }}</span>
+              {%- endif -%}
+              {%- if block.settings.badge_4 != blank -%}
+                <span class="banner__trust-badge">{{ block.settings.badge_4 }}</span>
+              {%- endif -%}
+            </div>
         {%- endcase -%}
       {%- endfor -%}
     </div>
   </div>
 </div>
+
+<style>
+  .banner__trust-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+  .banner__trust-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.4rem 1.2rem;
+    border-radius: 40px;
+    font-size: 1.2rem;
+    letter-spacing: 0.04em;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: inherit;
+    white-space: nowrap;
+  }
+  @media screen and (max-width: 749px) {
+    .banner__trust-badges {
+      gap: 0.5rem;
+    }
+    .banner__trust-badge {
+      font-size: 1rem;
+      padding: 0.3rem 0.8rem;
+    }
+  }
+</style>
 
 {% schema %}
 {
@@ -509,6 +556,37 @@
           "id": "button_style_secondary_2",
           "default": false,
           "label": "t:sections.image-banner.blocks.buttons.settings.button_style_secondary_2.label"
+        }
+      ]
+    },
+    {
+      "type": "trust_badges",
+      "name": "Trust badges",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "badge_1",
+          "label": "Badge 1",
+          "default": "10-Year Warranty"
+        },
+        {
+          "type": "text",
+          "id": "badge_2",
+          "label": "Badge 2",
+          "default": "Free Shipping $300+"
+        },
+        {
+          "type": "text",
+          "id": "badge_3",
+          "label": "Badge 3",
+          "default": "Trustpilot 4.6/5"
+        },
+        {
+          "type": "text",
+          "id": "badge_4",
+          "label": "Badge 4",
+          "default": "Secure Checkout"
         }
       ]
     }
