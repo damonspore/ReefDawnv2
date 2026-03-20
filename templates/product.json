@@ -110,17 +110,36 @@
           "type": "description",
           "disabled": true,
           "settings": {}
+        },
+        "inventory_block": {
+          "type": "inventory",
+          "settings": {
+            "text_style": "body",
+            "inventory_threshold": 10,
+            "show_inventory_quantity": true
+          }
+        },
+        "benefits_strip_block": {
+          "type": "benefits_strip",
+          "settings": {
+            "benefit_1": "\uD83D\uDEE1\uFE0F 10-Year Warranty",
+            "benefit_2": "\uD83D\uDE9A Free Shipping $300+",
+            "benefit_3": "\uD83D\uDD12 Secure Payment",
+            "benefit_4": ""
+          }
         }
       },
       "block_order": [
         "vendor",
         "title",
         "price",
+        "inventory_block",
         "icon_with_text_WYarcw",
         "custom_liquid_pc8epP",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
+        "benefits_strip_block",
         "26c38253-4e8d-4bea-aac9-b6b6b002d032",
         "collapsible_description_liquid",
         "collapsible_specs_liquid",

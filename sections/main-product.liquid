@@ -1,3 +1,22 @@
+<style>
+  .product__benefits-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.5rem;
+    padding: 1.2rem 0;
+    margin-top: 0.5rem;
+    border-top: 1px solid rgba(var(--color-foreground), 0.08);
+  }
+  .product__benefit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: rgba(var(--color-foreground), 0.75);
+  }
+</style>
 <product-info
   id="MainProduct-{{ section.id }}"
   class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
@@ -686,6 +705,21 @@
                 </product-recommendations>
               {%- when 'icon-with-text' -%}
                 {% render 'icon-with-text', block: block %}
+              {%- when 'benefits_strip' -%}
+                <div class="product__benefits-strip" {{ block.shopify_attributes }}>
+                  {%- if block.settings.benefit_1 != blank -%}
+                    <span class="product__benefit">{{ block.settings.benefit_1 }}</span>
+                  {%- endif -%}
+                  {%- if block.settings.benefit_2 != blank -%}
+                    <span class="product__benefit">{{ block.settings.benefit_2 }}</span>
+                  {%- endif -%}
+                  {%- if block.settings.benefit_3 != blank -%}
+                    <span class="product__benefit">{{ block.settings.benefit_3 }}</span>
+                  {%- endif -%}
+                  {%- if block.settings.benefit_4 != blank -%}
+                    <span class="product__benefit">{{ block.settings.benefit_4 }}</span>
+                  {%- endif -%}
+                </div>
             {%- endcase -%}
           {%- endfor -%}
           <a href="{{ product.url }}" class="link product__view-details animate-arrow">
@@ -2141,6 +2175,36 @@
           "default": "t:sections.main-product.blocks.icon_with_text.settings.heading_3.default",
           "label": "t:sections.main-product.blocks.icon_with_text.settings.heading_3.label",
           "info": "t:sections.main-product.blocks.icon_with_text.settings.heading.info"
+        }
+      ]
+    },
+    {
+      "type": "benefits_strip",
+      "name": "Benefits strip",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "benefit_1",
+          "label": "Benefit 1",
+          "default": "\uD83D\uDEE1\uFE0F 10-Year Warranty"
+        },
+        {
+          "type": "text",
+          "id": "benefit_2",
+          "label": "Benefit 2",
+          "default": "\uD83D\uDE9A Free Shipping $300+"
+        },
+        {
+          "type": "text",
+          "id": "benefit_3",
+          "label": "Benefit 3",
+          "default": "\uD83D\uDD12 Secure Payment"
+        },
+        {
+          "type": "text",
+          "id": "benefit_4",
+          "label": "Benefit 4"
         }
       ]
     }
