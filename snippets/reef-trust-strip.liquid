@@ -15,35 +15,48 @@
     border: 1px solid #5BBAD5;
     border-bottom: none;
     border-radius: 8px 8px 0 0;
+    white-space: nowrap;
   }
 
   .reef-trust-strip__warranty-icon {
     flex-shrink: 0;
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   .reef-trust-strip__warranty-icon svg {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     display: block;
   }
 
-  .reef-trust-strip__warranty-text {
-    font-size: 13.5px;
-    font-weight: 700;
+  .reef-trust-strip__warranty-label {
+    font-size: 13px;
     color: #1a6b8a;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
   }
 
-  .reef-trust-strip__warranty-sub {
-    font-size: 11.5px;
-    font-weight: 500;
+  .reef-trust-strip__warranty-label strong {
+    font-weight: 700;
+  }
+
+  .reef-trust-strip__warranty-label span {
+    font-weight: 400;
     color: #3a8aaa;
-    margin-left: 4px;
+    font-size: 12px;
+  }
+
+  @media (max-width: 400px) {
+    .reef-trust-strip__warranty {
+      white-space: normal;
+      text-align: center;
+    }
+    .reef-trust-strip__warranty-label {
+      font-size: 12px;
+    }
   }
 
   /* Trust signals row */
@@ -129,12 +142,6 @@
 
   /* Responsive */
   @media (max-width: 520px) {
-    .reef-trust-strip__warranty-text {
-      font-size: 12.5px;
-    }
-    .reef-trust-strip__warranty-sub {
-      font-size: 10.5px;
-    }
     .reef-trust-strip {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -168,11 +175,8 @@
         <path d="M8.5 11.5l2 2 3.5-4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </span>
-    <span class="reef-trust-strip__warranty-text">
-      Industry-Leading 10-Year Warranty
-    </span>
-    <span class="reef-trust-strip__warranty-sub">
-      — Included with every purchase
+    <span class="reef-trust-strip__warranty-label">
+      <strong>Industry-Leading 10-Year Warranty</strong> <span>— Included with every purchase</span>
     </span>
   </div>
 
