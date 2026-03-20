@@ -1,15 +1,37 @@
 /**
- * Reef Telecom theme JS — vanilla only, deferred. Scroll reveals + reduced motion.
+ * Reef Telecom theme JS — vanilla only, deferred.
+ * Scroll reveals, reduced motion (root class + reveal fallback), media query listener.
  */
 (function () {
   'use strict';
 
+  var mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
   function prefersReducedMotion() {
-    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    return mqReduce.matches;
+  }
+
+  function setReducedMotionClass() {
+    if (prefersReducedMotion()) {
+      document.documentElement.classList.add('reef-reduced-motion');
+    } else {
+      document.documentElement.classList.remove('reef-reduced-motion');
+    }
+  }
+
+  /** Ensure .reef-reveal nodes are visible when CSS/JS disagree (e.g. slow CSS load). */
+  function revealAllIfReducedMotion() {
+    if (!prefersReducedMotion()) return;
+    document.querySelectorAll('.reef-reveal:not(.is-visible)').forEach(function (el) {
+      el.classList.add('is-visible');
+    });
   }
 
   function initScrollReveals() {
-    if (prefersReducedMotion()) return;
+    if (prefersReducedMotion()) {
+      revealAllIfReducedMotion();
+      return;
+    }
 
     var nodes = document.querySelectorAll('.reef-reveal:not(.reef-reveal--skip)');
     if (!nodes.length || !('IntersectionObserver' in window)) return;
@@ -30,9 +52,29 @@
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initScrollReveals);
-  } else {
+  function init() {
+    setReducedMotionClass();
+    revealAllIfReducedMotion();
     initScrollReveals();
+  }
+
+  if (typeof mqReduce.addEventListener === 'function') {
+    mqReduce.addEventListener('change', function () {
+      setReducedMotionClass();
+      revealAllIfReducedMotion();
+      if (prefersReducedMotion()) return;
+      initScrollReveals();
+    });
+  } else if (typeof mqReduce.addListener === 'function') {
+    mqReduce.addListener(function () {
+      setReducedMotionClass();
+      revealAllIfReducedMotion();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
 })();

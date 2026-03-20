@@ -1,59 +1,103 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "reef_hero_main": {
+      "type": "reef-hero",
+      "settings": {
+        "color_scheme": "inverse",
+        "heading": "Enterprise hardware. Ocean-sized mission.",
+        "subheading": "Refurbished and new telecom, networking, and AI hardware for business — with certified quality, expert support, and a commitment to e-waste reduction and ocean conservation.",
+        "button_primary_label": "Shop all products",
+        "button_primary_link": "shopify://collections/all",
+        "button_secondary_label": "Our mission",
+        "button_secondary_link": "shopify://pages/mission",
+        "gradient_color_1": "#0b1a2e",
+        "gradient_color_2": "#112240",
+        "gradient_color_3": "#1e3a5f",
+        "enable_gradient_shift": true,
+        "trust_1": "Trusted by 2,000+ businesses",
+        "trust_2": "30-day returns",
+        "trust_3": "Certified refurbished",
+        "trust_4": "Fast shipping",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "reef_logo_bar": {
+      "type": "reef-logo-bar",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "logo_1": { "type": "logo", "settings": { "alt": "Cisco" } },
+        "logo_2": { "type": "logo", "settings": { "alt": "Poly" } },
+        "logo_3": { "type": "logo", "settings": { "alt": "Yealink" } },
+        "logo_4": { "type": "logo", "settings": { "alt": "Grandstream" } },
+        "logo_5": { "type": "logo", "settings": { "alt": "Juniper" } },
+        "logo_6": { "type": "logo", "settings": { "alt": "Dell" } },
+        "logo_7": { "type": "logo", "settings": { "alt": "Plantronics" } }
+      },
+      "block_order": ["logo_1", "logo_2", "logo_3", "logo_4", "logo_5", "logo_6", "logo_7"],
+      "settings": {
+        "color_scheme": "background-1",
+        "heading": "Brands we carry",
+        "auto_scroll_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "reef_category_grid": {
+      "type": "reef-category-grid",
+      "blocks": {
+        "cat_voip": {
+          "type": "category",
           "settings": {
-            "heading": "Smart IT. Clean Oceans. Boundless Possibilities.",
-            "heading_size": "h1",
-            "heading_tag": "h1"
+            "collection": "phones-cisco",
+            "tagline": "Desk phones, conference, Teams-ready"
           }
         },
-        "text_4NJnPc": {
-          "type": "text",
+        "cat_net": {
+          "type": "category",
           "settings": {
-            "text": "At Reef our mission is to provide the highest quality refurbished equipment and encourage environmentally-conscious equipment usage throughout its lifecycle. From VoIP Phones to Thin Clients and High Performance Switches powering next-generation AI clusters, we try help not only your bottom line, but the Earth's as well.",
-            "text_style": "subtitle"
+            "collection": "nvidia-spectrum",
+            "tagline": "Switches, routing & performance"
           }
         },
-        "button": {
-          "type": "buttons",
+        "cat_optics": {
+          "type": "category",
           "settings": {
-            "button_label_1": "Shop Deals",
-            "button_link_1": "shopify:\/\/collections\/featured-deals",
-            "button_style_secondary_1": false,
-            "button_label_2": "About Us",
-            "button_link_2": "shopify:\/\/pages\/mission",
-            "button_style_secondary_2": true
+            "collection": "all",
+            "title": "Fiber optics & transceivers",
+            "tagline": "Transceivers & fiber optics"
+          }
+        },
+        "cat_ai": {
+          "type": "category",
+          "settings": {
+            "collection": "ai-solutions",
+            "title": "AI & ML hardware",
+            "tagline": "GPUs, inference, data center"
+          }
+        },
+        "cat_thin": {
+          "type": "category",
+          "settings": {
+            "collection": "dell-wyse-thin-clients",
+            "tagline": "Wyse & enterprise endpoints"
+          }
+        },
+        "cat_head": {
+          "type": "category",
+          "settings": {
+            "collection": "featured-deals",
+            "title": "Headsets & accessories",
+            "tagline": "Audio & add-ons for your setup"
           }
         }
       },
-      "block_order": [
-        "heading",
-        "text_4NJnPc",
-        "button"
-      ],
+      "block_order": ["cat_voip", "cat_net", "cat_optics", "cat_ai", "cat_thin", "cat_head"],
       "settings": {
-        "image": "shopify:\/\/shop_images\/vibrant-coral-reef-word-spelled-colorful-textured-corals-surrounded-marine.webp",
-        "image_overlay_opacity": 70,
-        "image_height": "small",
-        "image_behavior": "fixed",
-        "desktop_content_position": "bottom-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": false,
-        "color_scheme": "inverse",
-        "stack_images_on_mobile": false,
-        "mobile_content_alignment": "center",
-        "show_text_below": false
-      }
-    },
-    "1756154740ae1b6fc4": {
-      "type": "apps",
-      "disabled": true,
-      "settings": {
-        "include_margins": true
+        "color_scheme": "background-1",
+        "heading": "Shop by category",
+        "subheading": "VoIP, networking, optics, AI hardware, thin clients, and more — curated for IT teams.",
+        "padding_top": 40,
+        "padding_bottom": 40
       }
     },
     "featured_collection": {
@@ -61,7 +105,7 @@
       "settings": {
         "collection": "featured-deals",
         "products_to_show": 8,
-        "title": "Featured Deals",
+        "title": "Best sellers",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
@@ -71,11 +115,11 @@
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
-        "color_scheme": "background-1",
+        "color_scheme": "background-2",
         "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
-        "show_vendor": false,
+        "show_vendor": true,
         "show_rating": false,
         "quick_add": "standard",
         "columns_mobile": "2",
@@ -90,8 +134,8 @@
         "vp_refurbished": {
           "type": "column",
           "settings": {
-            "title": "Certified Refurbished",
-            "text": "<p>Every product is thoroughly tested, certified, and backed by our industry-leading 10-year warranty. Enterprise-grade quality at a fraction of the cost.<\/p>",
+            "title": "Certified refurbished",
+            "text": "<p>Thoroughly tested, certified, and backed by warranty. Enterprise quality at a fraction of new.</p>",
             "link_label": "",
             "link": ""
           }
@@ -99,17 +143,17 @@
         "vp_ocean": {
           "type": "column",
           "settings": {
-            "title": "Ocean Conservation",
-            "text": "<p>We proudly support OCEARCH, Coral Restoration Foundation, Ocean Conservancy, and WHOI. Choosing refurbished reduces e-waste and protects our oceans.<\/p>",
-            "link_label": "Our Mission",
-            "link": "shopify:\/\/pages\/mission"
+            "title": "Marine conservation",
+            "text": "<p>We support ocean research and reef restoration. Refurbished gear means less e-waste in landfills and oceans.</p>",
+            "link_label": "Our mission",
+            "link": "shopify://pages/mission"
           }
         },
         "vp_enterprise": {
           "type": "column",
           "settings": {
-            "title": "Enterprise-Grade Equipment",
-            "text": "<p>From Cisco VoIP phones to Dell thin clients and NVIDIA networking switches, we stock the brands that power modern businesses and AI infrastructure.<\/p>",
+            "title": "Enterprise-grade",
+            "text": "<p>Cisco, Dell, NVIDIA, and more — the brands that power businesses and AI infrastructure.</p>",
             "link_label": "",
             "link": ""
           }
@@ -117,21 +161,16 @@
         "vp_support": {
           "type": "column",
           "settings": {
-            "title": "Expert IT Support",
-            "text": "<p>Our team of IT professionals provides pre-sales consultation, configuration assistance, and ongoing technical support for every order.<\/p>",
-            "link_label": "Contact Us",
-            "link": "shopify:\/\/pages\/contact-us-1"
+            "title": "Expert support",
+            "text": "<p>Pre-sales help, configuration guidance, and responsive support from real IT people.</p>",
+            "link_label": "Contact",
+            "link": "shopify://pages/contact-us-1"
           }
         }
       },
-      "block_order": [
-        "vp_refurbished",
-        "vp_ocean",
-        "vp_enterprise",
-        "vp_support"
-      ],
+      "block_order": ["vp_refurbished", "vp_ocean", "vp_enterprise", "vp_support"],
       "settings": {
-        "title": "Why Choose Reef Telecom?",
+        "title": "Why Reef Telecom",
         "heading_size": "h2",
         "image_width": "third",
         "image_ratio": "square",
@@ -147,216 +186,129 @@
         "padding_bottom": 40
       }
     },
-    "collection_list_iAjpa7": {
-      "type": "collection-list",
+    "mission_split": {
+      "type": "image-with-text",
       "blocks": {
-        "featured_collection_HtAxTH": {
-          "type": "featured_collection",
+        "mission_heading": {
+          "type": "heading",
           "settings": {
-            "collection": "ai-solutions"
+            "heading": "Technology that protects our reefs",
+            "heading_size": "h2"
           }
         },
-        "featured_collection_JJEkdb": {
-          "type": "featured_collection",
+        "mission_text": {
+          "type": "text",
           "settings": {
-            "collection": "phones-cisco"
+            "text": "<p>We believe enterprise IT can be both powerful and responsible. By extending the life of hardware, we cut waste and fund a healthier ocean.</p>",
+            "text_style": "body"
           }
         },
-        "featured_collection_UgkhBd": {
-          "type": "featured_collection",
+        "mission_btn": {
+          "type": "button",
           "settings": {
-            "collection": "dell-wyse-thin-clients"
-          }
-        },
-        "featured_collection_g3NtwE": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "nvidia-spectrum"
+            "button_label": "Learn more",
+            "button_link": "shopify://pages/mission",
+            "button_style_secondary": true
           }
         }
       },
-      "block_order": [
-        "featured_collection_HtAxTH",
-        "featured_collection_JJEkdb",
-        "featured_collection_UgkhBd",
-        "featured_collection_g3NtwE"
-      ],
+      "block_order": ["mission_heading", "mission_text", "mission_btn"],
       "settings": {
-        "title": "Shop by Category",
-        "heading_size": "h2",
-        "image_ratio": "square",
-        "columns_desktop": 4,
-        "color_scheme": "",
-        "show_view_all": true,
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "image": "",
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "background-1",
+        "color_scheme": "background-1",
+        "padding_top": 48,
+        "padding_bottom": 48
       }
     },
-    "custom_liquid_n6a8Uy": {
-      "type": "custom-liquid",
+    "reef_testimonials": {
+      "type": "reef-testimonials",
+      "blocks": {
+        "t1": {
+          "type": "quote",
+          "settings": {
+            "quote": "Ordering was easy and the hardware showed up exactly as described. Support answered our VLAN questions same day.",
+            "author": "Jordan P.",
+            "company": "IT Manager",
+            "rating": 5
+          }
+        },
+        "t2": {
+          "type": "quote",
+          "settings": {
+            "quote": "Great pricing on refurbished switches. We've standardized on Reef for our branch offices.",
+            "author": "Sam R.",
+            "company": "Network Engineer",
+            "rating": 5
+          }
+        },
+        "t3": {
+          "type": "quote",
+          "settings": {
+            "quote": "Fast shipping and solid packaging. The phone worked perfectly with our Teams setup.",
+            "author": "Alex M.",
+            "company": "Operations",
+            "rating": 5
+          }
+        }
+      },
+      "block_order": ["t1", "t2", "t3"],
       "settings": {
-        "custom_liquid": "<!-- TrustBox widget - Starter -->\n<div class=\"trustpilot-widget\" data-locale=\"en-US\" data-template-id=\"5613c9cde69ddc09340c6beb\" data-businessunit-id=\"65c538d1df194ffd531897a2\" data-style-height=\"100%\" data-style-width=\"100%\" data-theme=\"light\">\n  <a href=\"https:\/\/www.trustpilot.com\/review\/reeftel.com\" target=\"_blank\" rel=\"noopener\">Trustpilot<\/a>\n<\/div>\n<!-- End TrustBox widget -->",
-        "color_scheme": "",
+        "color_scheme": "background-2",
+        "heading": "What customers say",
+        "autoplay": true,
+        "autoplay_speed": 6,
         "padding_top": 40,
-        "padding_bottom": 52
+        "padding_bottom": 40
       }
     },
-    "multicolumn_cqAgL3": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_gtV8rM": {
-          "type": "column",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/white-ocearch-logo-stylized-shark-silhouette-wavy-lines-set-underwater.webp",
-            "title": "Ocearch",
-            "text": "",
-            "link_label": "2026 Monthly Shark Hero",
-            "link": "https:\/\/www.ocearch.org\/about\/"
-          }
-        },
-        "column_GdjjiD": {
-          "type": "column",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/coral-restoration-foundation-logo-word-navy-blue-stylized-branch-inside.webp",
-            "title": "Coral Restoration Foundation",
-            "text": "",
-            "link_label": "2025 Staghorn Donor",
-            "link": "https:\/\/www.coralrestoration.org\/"
-          }
-        },
-        "column_3Ydqfe": {
-          "type": "column",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/ocean-conservancy-logo-features-circular-design-composed-blue-silhouettes-marine.webp",
-            "title": "Ocean Conservancy",
-            "text": "",
-            "link_label": "2025 Donor",
-            "link": "https:\/\/oceanconservancy.org"
-          }
-        },
-        "column_HHhYmr": {
-          "type": "column",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/woods-hole-oceanographic-institution-logo-stylized-blue-teal-wave-design.webp",
-            "title": "WHOI",
-            "text": "",
-            "link_label": "2025 Associate Member",
-            "link": "https:\/\/www.whoi.edu\/know-your-ocean\/"
-          }
-        }
-      },
-      "block_order": [
-        "column_gtV8rM",
-        "column_GdjjiD",
-        "column_3Ydqfe",
-        "column_HHhYmr"
-      ],
+    "featured_blog_home": {
+      "type": "featured-blog",
       "settings": {
-        "title": "Reef Telecom Proudly Supports",
+        "blog": "reef-telecom-knowledge-base-how-tos",
+        "post_limit": 3,
+        "heading": "From the Reef — guides and insights",
         "heading_size": "h2",
-        "image_width": "half",
-        "image_ratio": "square",
-        "button_label": "",
-        "button_link": "",
-        "columns_desktop": 4,
-        "column_alignment": "center",
-        "background_style": "none",
-        "color_scheme": "",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
+        "columns_desktop": 3,
+        "show_view_all": true,
+        "show_image": true,
+        "show_date": true,
+        "show_author": false,
+        "color_scheme": "background-1",
+        "padding_top": 40,
         "padding_bottom": 36
       }
     },
-    "trust_strip_home": {
-      "type": "trust-strip",
-      "blocks": {
-        "trust_warranty": {
-          "type": "trust_item",
-          "settings": {
-            "icon": "\uD83D\uDEE1\uFE0F",
-            "label": "10-Year Warranty",
-            "detail": ""
-          }
-        },
-        "trust_shipping": {
-          "type": "trust_item",
-          "settings": {
-            "icon": "\uD83D\uDE9A",
-            "label": "Free Shipping $300+",
-            "detail": ""
-          }
-        },
-        "trust_reviews": {
-          "type": "trust_item",
-          "settings": {
-            "icon": "\u2B50",
-            "label": "Trustpilot 4.6\/5",
-            "detail": "(924 Reviews)"
-          }
-        },
-        "trust_secure": {
-          "type": "trust_item",
-          "settings": {
-            "icon": "\uD83D\uDD12",
-            "label": "Secure Checkout",
-            "detail": ""
-          }
-        }
-      },
-      "block_order": [
-        "trust_warranty",
-        "trust_shipping",
-        "trust_reviews",
-        "trust_secure"
-      ],
+    "reef_newsletter": {
+      "type": "reef-newsletter-strip",
       "settings": {
-        "color_scheme": "accent-1",
-        "padding_top": 16,
-        "padding_bottom": 16
-      }
-    },
-    "1711289065cae650c8": {
-      "type": "apps",
-      "blocks": {
-        "planet_shopify_planet_3hHgVK": {
-          "type": "shopify:\/\/apps\/planet\/blocks\/shopify-planet\/12047591-3a2d-45cc-9dfd-2ce5eaa45dee",
-          "settings": {
-            "badgeMode": "info",
-            "customText": "",
-            "showMoreInfo": "modal",
-            "showLogo": true,
-            "showStats": true,
-            "showProjects": false,
-            "backgroundColor": "#f1f8f5",
-            "textColor": "#1d4136",
-            "borderColor": "#95c9b4",
-            "fullWidth": true,
-            "marginTop": 0,
-            "marginBottom": 0,
-            "borderRadius": 4
-          }
-        }
-      },
-      "block_order": [
-        "planet_shopify_planet_3hHgVK"
-      ],
-      "settings": {
-        "include_margins": true
+        "color_scheme": "inverse",
+        "heading": "Stay connected",
+        "text": "<p>Exclusive deals, how-tos, and conservation updates — no spam.</p>",
+        "button_label": "Subscribe",
+        "privacy_note": "We respect your inbox. Unsubscribe anytime.",
+        "padding_top": 48,
+        "padding_bottom": 48
       }
     }
   },
   "order": [
-    "image_banner",
-    "trust_strip_home",
-    "1756154740ae1b6fc4",
+    "reef_hero_main",
+    "reef_logo_bar",
+    "reef_category_grid",
     "featured_collection",
     "value_props_home",
-    "collection_list_iAjpa7",
-    "custom_liquid_n6a8Uy",
-    "multicolumn_cqAgL3",
-    "1711289065cae650c8"
+    "mission_split",
+    "reef_testimonials",
+    "featured_blog_home",
+    "reef_newsletter"
   ]
 }

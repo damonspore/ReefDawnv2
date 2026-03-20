@@ -10,7 +10,16 @@
   }
 </style>
 
-<div class="template-404 page-width page-margin center">
+{%- liquid
+  assign reef_contact_url = '/pages/contact'
+  if pages.contact != blank
+    assign reef_contact_url = pages.contact.url
+  elsif pages['contact-us-1'] != blank
+    assign reef_contact_url = pages['contact-us-1'].url
+  endif
+-%}
+
+<div class="template-404 page-width page-margin center reef-support reef-support--404">
   <h1 class="title">
     {{ 'templates.404.title' | t }}
   </h1>
@@ -18,17 +27,23 @@
     {{ 'templates.404.subtext' | t }}
   </p>
 
-  <div style="max-width: 48rem; margin: 2rem auto;">
-    <form action="{{ routes.search_url }}" method="get" role="search" style="display: flex; gap: 0.8rem;">
-      <input type="search" name="q" placeholder="{{ 'templates.404.search_placeholder' | t }}" aria-label="{{ 'templates.404.search_button' | t }}" class="field__input" style="flex: 1;">
+  <div class="reef-404-search">
+    <form action="{{ routes.search_url }}" method="get" role="search" class="reef-404-search__form">
+      <input
+        type="search"
+        name="q"
+        placeholder="{{ 'templates.404.search_placeholder' | t }}"
+        aria-label="{{ 'templates.404.search_button' | t }}"
+        class="field__input"
+      >
       <button type="submit" class="button">{{ 'templates.404.search_button' | t }}</button>
     </form>
   </div>
 
-  <div style="margin-top: 2rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
+  <div class="reef-404-actions">
     <a href="{{ routes.all_products_collection_url }}" class="button">
       {{ 'general.continue_shopping' | t }}
     </a>
-    <a href="/pages/contact" class="button button--secondary">{{ 'templates.404.contact_us' | t }}</a>
+    <a href="{{ reef_contact_url }}" class="button button--secondary">{{ 'templates.404.contact_us' | t }}</a>
   </div>
 </div>

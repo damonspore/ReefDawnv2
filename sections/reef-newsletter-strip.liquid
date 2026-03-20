@@ -1,0 +1,125 @@
+{% comment %} REEF: Full-width newsletter CTA with teal gradient. {% endcomment %}
+
+<div class="reef-newsletter-strip color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="reef-newsletter-strip__inner">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="reef-newsletter-strip__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <div class="reef-newsletter-strip__text rte">{{ section.settings.text }}</div>
+      {%- endif -%}
+      {%- form 'customer', class: 'reef-newsletter-strip__form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <div class="reef-newsletter-strip__fields">
+          <div class="field">
+            <input
+              id="ReefNewsletter-{{ section.id }}"
+              type="email"
+              name="contact[email]"
+              class="field__input"
+              value="{{ form.email }}"
+              aria-required="true"
+              autocorrect="off"
+              autocapitalize="off"
+              autocomplete="email"
+              placeholder="{{ 'newsletter.label' | t }}"
+              required
+            >
+            <label class="field__label" for="ReefNewsletter-{{ section.id }}">{{ 'newsletter.label' | t }}</label>
+          </div>
+          <button type="submit" class="button button--primary reef-newsletter-strip__submit" name="commit">
+            {{ section.settings.button_label | default: 'Subscribe' | escape }}
+          </button>
+        </div>
+        {%- if section.settings.privacy_note != blank -%}
+          <p class="reef-newsletter-strip__privacy">{{ section.settings.privacy_note | escape }}</p>
+        {%- endif -%}
+        {%- if form.errors -%}
+          <p class="form__message" role="alert">{{ form.errors.messages.email }}</p>
+        {%- endif -%}
+        {%- if form.posted_successfully? -%}
+          <p class="form__message" role="status">{{ 'newsletter.success' | t }}</p>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{% schema %}
+{
+  "name": "Reef — Newsletter strip",
+  "tag": "section",
+  "class": "reef-section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "inverse"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Stay connected"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Exclusive deals, guides, and conservation updates.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Subscribe"
+    },
+    {
+      "type": "text",
+      "id": "privacy_note",
+      "label": "Privacy note",
+      "default": "We respect your inbox. Unsubscribe anytime."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reef — Newsletter strip"
+    }
+  ]
+}
+{% endschema %}

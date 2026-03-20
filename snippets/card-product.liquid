@@ -19,6 +19,8 @@
 
   Usage:
   {% render 'card-product', show_vendor: section.settings.show_vendor %}
+
+  Optional metafield (product): custom.reef_condition — refurbished | new | open_box (see reef-condition-badge)
 {% endcomment %}
 {%- unless skip_styles -%}
   <style>
@@ -54,7 +56,7 @@
       assign ratio = 1
     endif
   -%}
-  <div class="card-wrapper product-card-wrapper underline-links-hover">
+  <div class="card-wrapper product-card-wrapper underline-links-hover reef-card-product">
     <div
       class="
         card card--{{ settings.card_style }}
@@ -219,6 +221,17 @@
             {%- endif -%}
 
             {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+            {%- liquid
+              assign reef_cond = card_product.metafields.custom.reef_condition.value
+              if reef_cond == blank
+                assign reef_cond = card_product.metafields.custom.reef_condition
+              endif
+            -%}
+            {%- if reef_cond != blank -%}
+              <div class="reef-card-product__condition">
+                {% render 'reef-condition-badge', condition: reef_cond %}
+              </div>
+            {%- endif -%}
             {%- if card_product.quantity_price_breaks_configured? -%}
               {% if card_product.variants_count == 1 and quick_add == 'bulk' %}
                 {% liquid
@@ -527,6 +540,17 @@
                           <h3>{{ card_product.title | escape }}</h3>
                         </a>
                         {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+                        {%- liquid
+                          assign reef_cond = card_product.metafields.custom.reef_condition.value
+                          if reef_cond == blank
+                            assign reef_cond = card_product.metafields.custom.reef_condition
+                          endif
+                        -%}
+                        {%- if reef_cond != blank -%}
+                          <div class="reef-card-product__condition">
+                            {% render 'reef-condition-badge', condition: reef_cond %}
+                          </div>
+                        {%- endif -%}
                         {%- if card_product.quantity_price_breaks_configured? -%}
                           <div class="card__information-volume-pricing-note">
                             <span class="caption">{{ 'products.product.volume_pricing.note' | t }}</span>
@@ -542,6 +566,17 @@
                           </h3>
                         </a>
                         {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+                        {%- liquid
+                          assign reef_cond = card_product.metafields.custom.reef_condition.value
+                          if reef_cond == blank
+                            assign reef_cond = card_product.metafields.custom.reef_condition
+                          endif
+                        -%}
+                        {%- if reef_cond != blank -%}
+                          <div class="reef-card-product__condition">
+                            {% render 'reef-condition-badge', condition: reef_cond %}
+                          </div>
+                        {%- endif -%}
                         {%- if card_product.quantity_price_breaks_configured? -%}
                           <div class="card__information-volume-pricing-note">
                             <span class="caption">{{ 'products.product.volume_pricing.note' | t }}</span>
@@ -595,7 +630,7 @@
       assign ratio = 0.8
     endif
   -%}
-  <div class="card-wrapper product-card-wrapper underline-links-hover">
+  <div class="card-wrapper product-card-wrapper underline-links-hover reef-card-product">
     <div
       class="
         card card--{{ settings.card_style }}

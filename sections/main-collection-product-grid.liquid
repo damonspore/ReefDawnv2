@@ -36,30 +36,44 @@
   }
 {%- endstyle -%}
 
-{%- if collection.products.size > 0 -%}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": {{ collection.title | json }},
-    "url": {{ request.origin | append: collection.url | json }},
-    "numberOfItems": {{ collection.products_count }},
-    "itemListElement": [
-      {%- for product in collection.products limit: section.settings.products_per_page -%}
-        {
-          "@type": "ListItem",
-          "position": {{ forloop.index }},
-          "name": {{ product.title | json }},
-          "url": {{ request.origin | append: product.url | json }}
-        }{%- unless forloop.last -%},{%- endunless -%}
-      {%- endfor -%}
-    ]
-  }
-  </script>
-{%- endif -%}
-
-<div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
+<div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }} reef-collection-grid">
   {%- paginate collection.products by section.settings.products_per_page -%}
+    {%- if collection.products.size > 0 -%}
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": {{ collection.title | json }},
+          "url": {{ request.origin | append: collection.url | json }},
+          "description": {{ collection.description | strip_html | truncate: 500 | json }},
+          "isPartOf": {
+            "@type": "WebSite",
+            "name": {{ shop.name | json }},
+            "url": {{ request.origin | append: routes.root_url | json }}
+          },
+          "mainEntity": {
+            "@type": "ItemList",
+            "numberOfItems": {{ collection.products_count }},
+            "itemListElement": [
+              {%- for product in collection.products limit: section.settings.products_per_page -%}
+                {
+                  "@type": "ListItem",
+                  "position": {{ paginate.current_offset | plus: forloop.index }},
+                  "item": {
+                    "@type": "Product",
+                    "name": {{ product.title | json }},
+                    "url": {{ request.origin | append: product.url | json }}
+                    {%- if product.featured_media -%}
+                      ,"image": {{ product.featured_media | image_url: width: 1200 | prepend: 'https:' | json }}
+                    {%- endif -%}
+                  }
+                }{%- unless forloop.last -%},{%- endunless -%}
+              {%- endfor -%}
+            ]
+          }
+        }
+      </script>
+    {%- endif -%}
     {%- if paginate.previous -%}<link rel="prev" href="{{ paginate.previous.url }}">{%- endif -%}
     {%- if paginate.next -%}<link rel="next" href="{{ paginate.next.url }}">{%- endif -%}
     {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
@@ -167,8 +181,17 @@
             class="collection{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
           >
             <div class="loading-overlay gradient"></div>
-            <div class="collection__product-count" style="display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; margin-bottom: 0.5rem; font-size: 1.3rem; color: rgba(var(--color-foreground), 0.6);">
-              <span>Showing {{ collection.products_count }} of {{ collection.all_products_count }} products</span>
+            <div class="collection__product-count reef-collection-grid__count" role="status">
+              <span class="reef-collection-grid__count-text">
+                {%- if collection.products_count == collection.all_products_count -%}
+                  {{ 'products.facets.product_count_simple' | t: count: collection.products_count }}
+                {%- else -%}
+                  {{
+                    'products.facets.product_count'
+                    | t: product_count: collection.products_count, count: collection.all_products_count
+                  }}
+                {%- endif -%}
+              </span>
             </div>
             <ul
               id="product-grid"
@@ -210,7 +233,7 @@
             </ul>
 
             {%- if paginate.pages > 1 -%}
-              {% render 'pagination', paginate: paginate, anchor: '' %}
+              {% render 'pagination', paginate: paginate, anchor: '', wrapper_class: 'reef-collection-pagination' %}
             {%- endif -%}
           </div>
         {%- endif -%}

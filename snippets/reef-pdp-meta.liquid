@@ -1,0 +1,28 @@
+{% comment %}
+  REEF: PDP — condition pill + optional rich note from product metafields.
+  Metafields: custom.reef_condition (single line), custom.reef_pdp_note (rich text, optional).
+{% endcomment %}
+{%- liquid
+  assign reef_cond = product.metafields.custom.reef_condition.value
+  if reef_cond == blank
+    assign reef_cond = product.metafields.custom.reef_condition
+  endif
+  assign has_note = false
+  if product.metafields.custom.reef_pdp_note != blank
+    assign has_note = true
+  endif
+-%}
+{%- if reef_cond != blank or has_note -%}
+  <div class="reef-pdp-meta" {{ block.shopify_attributes }}>
+    {%- if reef_cond != blank -%}
+      <div class="reef-pdp-meta__badges">
+        {% render 'reef-condition-badge', condition: reef_cond %}
+      </div>
+    {%- endif -%}
+    {%- if has_note -%}
+      <div class="reef-pdp-meta__note rte">
+        {{ product.metafields.custom.reef_pdp_note | metafield_tag }}
+      </div>
+    {%- endif -%}
+  </div>
+{%- endif -%}

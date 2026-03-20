@@ -27,6 +27,10 @@
           "type": "price",
           "settings": {}
         },
+        "reef_pdp_meta_block": {
+          "type": "reef_pdp_meta",
+          "settings": {}
+        },
         "icon_with_text_WYarcw": {
           "type": "icon-with-text",
           "disabled": true,
@@ -63,6 +67,19 @@
           "settings": {
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": false
+          }
+        },
+        "complementary_cross_sell": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Pairs well with",
+            "make_collapsible_row": true,
+            "icon": "price_tag",
+            "product_list_limit": 4,
+            "products_per_page": 3,
+            "pagination_style": "counter",
+            "image_ratio": "square",
+            "enable_quick_add": true
           }
         },
         "26c38253-4e8d-4bea-aac9-b6b6b002d032": {
@@ -133,12 +150,14 @@
         "vendor",
         "title",
         "price",
+        "reef_pdp_meta_block",
         "inventory_block",
         "icon_with_text_WYarcw",
         "custom_liquid_pc8epP",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
+        "complementary_cross_sell",
         "benefits_strip_block",
         "26c38253-4e8d-4bea-aac9-b6b6b002d032",
         "collapsible_description_liquid",

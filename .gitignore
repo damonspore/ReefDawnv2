@@ -22,3 +22,7 @@ npm-debug.log*
 
 # Misc
 *.zip
+
+# Cursor / local agent artifacts (not theme source)
+.agents/
+skills-lock.json

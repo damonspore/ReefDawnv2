@@ -1,0 +1,235 @@
+{% comment %} REEF: Testimonials — horizontal scroll / snap; optional autoplay. {% endcomment %}
+
+<div class="reef-testimonials color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="reef-testimonials__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    <div
+      class="reef-testimonials__viewport"
+      id="ReefTestimonials-{{ section.id }}"
+      data-autoplay="{{ section.settings.autoplay }}"
+      data-interval="{{ section.settings.autoplay_speed | times: 1000 }}"
+    >
+      <ul class="reef-testimonials__track" role="list">
+        {%- for block in section.blocks -%}
+          <li
+            id="ReefT-{{ section.id }}-{{ forloop.index }}"
+            class="reef-testimonials__slide reef-reveal"
+            {{ block.shopify_attributes }}
+            tabindex="-1"
+          >
+            <blockquote class="reef-testimonials__card">
+              {%- if block.settings.rating > 0 -%}
+                <p class="reef-testimonials__stars" aria-label="{{ block.settings.rating }} of 5">
+                  {%- for i in (1..5) -%}
+                    <span class="reef-testimonials__star{% if i > block.settings.rating %} reef-testimonials__star--dim{% endif %}" aria-hidden="true">★</span>
+                  {%- endfor -%}
+                </p>
+              {%- endif -%}
+              {%- if block.settings.quote != blank -%}
+                <p class="reef-testimonials__quote">{{ block.settings.quote | escape }}</p>
+              {%- endif -%}
+              <footer class="reef-testimonials__meta">
+                {%- if block.settings.author != blank -%}
+                  <cite class="reef-testimonials__author">{{ block.settings.author | escape }}</cite>
+                {%- endif -%}
+                {%- if block.settings.company != blank -%}
+                  <span class="reef-testimonials__company">{{ block.settings.company | escape }}</span>
+                {%- endif -%}
+              </footer>
+            </blockquote>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+    {%- if section.blocks.size > 1 -%}
+      <div class="reef-testimonials__nav">
+        <button
+          type="button"
+          class="reef-testimonials__btn reef-testimonials__btn--prev"
+          aria-controls="ReefTestimonials-{{ section.id }}"
+          data-dir="-1"
+        >
+          <span class="visually-hidden">{{ 'general.slider.previous_slide' | t }}</span>
+          ‹
+        </button>
+        <button
+          type="button"
+          class="reef-testimonials__btn reef-testimonials__btn--next"
+          aria-controls="ReefTestimonials-{{ section.id }}"
+          data-dir="1"
+        >
+          <span class="visually-hidden">{{ 'general.slider.next_slide' | t }}</span>
+          ›
+        </button>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{% javascript %}
+  (function () {
+    function initReefTestimonials(root) {
+      if (!root || root.dataset.reefInit) return;
+      root.dataset.reefInit = '1';
+      var track = root.querySelector('.reef-testimonials__track');
+      var slides = root.querySelectorAll('.reef-testimonials__slide');
+      if (!track || slides.length < 2) return;
+
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var autoplay = root.dataset.autoplay === 'true' && !reduceMotion;
+      var intervalMs = parseInt(root.dataset.interval || '6000', 10);
+      var index = 0;
+      var timer;
+
+      function go(delta) {
+        index = (index + delta + slides.length) % slides.length;
+        slides[index].scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', inline: 'nearest', block: 'nearest' });
+      }
+
+      root.querySelectorAll('[data-dir]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          go(parseInt(btn.getAttribute('data-dir'), 10));
+        });
+      });
+
+      if (autoplay) {
+        timer = setInterval(function () {
+          go(1);
+        }, intervalMs);
+        root.addEventListener('mouseenter', function () {
+          clearInterval(timer);
+        });
+        root.addEventListener('mouseleave', function () {
+          clearInterval(timer);
+          timer = setInterval(function () {
+            go(1);
+          }, intervalMs);
+        });
+      }
+    }
+
+    document.querySelectorAll('.reef-testimonials__viewport').forEach(initReefTestimonials);
+    document.addEventListener('shopify:section:load', function (ev) {
+      ev.target.querySelectorAll('.reef-testimonials__viewport').forEach(initReefTestimonials);
+    });
+  })();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Reef — Testimonials",
+  "tag": "section",
+  "class": "reef-section",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "background-2"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What customers say"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Auto-advance slides",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "unit": "s",
+      "label": "Autoplay interval",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "Fast shipping and gear arrived exactly as described."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Name",
+          "default": "Alex M."
+        },
+        {
+          "type": "text",
+          "id": "company",
+          "label": "Company / role",
+          "default": "IT Director"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "label": "Star rating",
+          "default": 5
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reef — Testimonials",
+      "blocks": [
+        { "type": "quote" },
+        { "type": "quote" },
+        { "type": "quote" }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -522,3 +522,629 @@ predictive-search .predictive-search__item:focus-within {
     transition: none;
   }
 }
+
+/* --- Phase 3: homepage (reef-* sections) --- */
+
+.reef-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100svh - var(--header-height, 72px));
+  display: flex;
+  align-items: center;
+  background: linear-gradient(
+    165deg,
+    var(--reef-hero-g1, #0b1a2e) 0%,
+    var(--reef-hero-g2, #112240) 50%,
+    var(--reef-hero-g3, #1e3a5f) 100%
+  );
+  color: var(--color-text-inverse);
+}
+
+.reef-hero--animated {
+  background-size: 200% 200%;
+  animation: reefHeroGradient 28s ease-in-out infinite;
+}
+
+@keyframes reefHeroGradient {
+  0%,
+  100% {
+    background-position: 0% 40%;
+  }
+  50% {
+    background-position: 100% 60%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reef-hero--animated {
+    animation: none;
+    background-size: 100% 100%;
+  }
+}
+
+.reef-hero__inner {
+  width: 100%;
+}
+
+.reef-hero__grid {
+  display: grid;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+
+@media screen and (min-width: 990px) {
+  .reef-hero__grid--split {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.reef-hero__heading {
+  font-size: var(--text-hero);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-inverse);
+  margin: 0 0 var(--space-md);
+  line-height: 1.1;
+}
+
+.reef-hero__sub {
+  font-size: var(--text-lg);
+  color: rgba(250, 251, 252, 0.82);
+  max-width: 38em;
+  margin: 0 0 var(--space-xl);
+  line-height: 1.55;
+}
+
+.reef-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.reef-hero__btn--primary {
+  min-height: 5.2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.reef-hero__btn--secondary {
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  background: transparent;
+  color: var(--color-text-inverse);
+}
+
+.reef-hero__btn--secondary:hover {
+  border-color: var(--color-reef-teal-light);
+  color: var(--color-text-inverse);
+}
+
+.reef-hero__media {
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.reef-hero__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: middle;
+}
+
+.reef-hero__trust {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md) var(--space-2xl);
+  list-style: none;
+  margin: var(--space-3xl) 0 0;
+  padding: var(--space-md) 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: var(--text-sm);
+  color: rgba(250, 251, 252, 0.85);
+}
+
+.reef-logo-bar__heading {
+  text-align: center;
+  margin: 0 0 var(--space-xl);
+  font-size: var(--text-xl);
+}
+
+.reef-logo-bar__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xl) var(--space-3xl);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.reef-logo-bar__img {
+  max-height: 48px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.82;
+  transition:
+    filter var(--transition-base),
+    opacity var(--transition-base),
+    transform var(--transition-fast);
+}
+
+.reef-logo-bar__link:hover .reef-logo-bar__img,
+.reef-logo-bar__link:focus-visible .reef-logo-bar__img {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+.reef-logo-bar__placeholder {
+  min-height: 40px;
+  min-width: 100px;
+}
+
+.reef-category-grid__head {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reef-category-grid__title {
+  font-size: var(--text-3xl);
+  margin: 0 0 var(--space-sm);
+}
+
+.reef-category-grid__sub {
+  margin: 0;
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+}
+
+.reef-category-grid__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-lg);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (min-width: 990px) {
+  .reef-category-grid__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.reef-category-grid__card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  background: var(--color-bg-elevated);
+  box-shadow: var(--shadow-sm);
+  transition:
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+}
+
+.reef-category-grid__card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+.reef-category-grid__media {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: rgba(var(--color-foreground), 0.04);
+}
+
+.reef-category-grid__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.reef-category-grid__card:hover .reef-category-grid__img {
+  transform: scale(1.04);
+}
+
+.reef-category-grid__body {
+  padding: var(--space-md) var(--space-lg) var(--space-lg);
+}
+
+.reef-category-grid__name {
+  margin: 0 0 var(--space-xs);
+  font-size: var(--text-lg);
+}
+
+.reef-category-grid__tagline {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.reef-testimonials__heading {
+  text-align: center;
+  margin: 0 0 var(--space-xl);
+  font-size: var(--text-3xl);
+}
+
+.reef-testimonials__viewport {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  margin: 0 calc(-1 * var(--space-md));
+  padding: 0 var(--space-md);
+}
+
+.reef-testimonials__track {
+  display: flex;
+  gap: var(--space-lg);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.reef-testimonials__slide {
+  flex: 0 0 min(100%, 400px);
+  scroll-snap-align: start;
+}
+
+.reef-testimonials__card {
+  margin: 0;
+  padding: var(--space-xl);
+  border-radius: var(--border-radius-lg);
+  background: rgba(var(--color-foreground), 0.03);
+  border: 1px solid rgba(var(--color-foreground), 0.08);
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.reef-testimonials__stars {
+  margin: 0 0 var(--space-sm);
+  letter-spacing: 0.15em;
+  color: var(--color-warning);
+}
+
+.reef-testimonials__star--dim {
+  opacity: 0.25;
+}
+
+.reef-testimonials__quote {
+  font-size: var(--text-base);
+  line-height: 1.55;
+  margin: 0 0 var(--space-md);
+}
+
+.reef-testimonials__meta {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.reef-testimonials__author {
+  font-style: normal;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.reef-testimonials__company {
+  display: block;
+  margin-top: var(--space-xs);
+}
+
+.reef-testimonials__nav {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.reef-testimonials__btn {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--border-radius-full);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+  transition: background var(--transition-fast);
+}
+
+.reef-testimonials__btn:hover {
+  background: var(--color-reef-teal-subtle);
+}
+
+.reef-newsletter-strip {
+  background: linear-gradient(120deg, #0b1a2e 0%, #00b4d8 100%) !important;
+  color: var(--color-text-inverse) !important;
+  --color-foreground: 250, 251, 252;
+}
+
+.reef-newsletter-strip__inner {
+  max-width: 40rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.reef-newsletter-strip__heading {
+  font-size: var(--text-3xl);
+  margin: 0 0 var(--space-md);
+  color: var(--color-text-inverse);
+}
+
+.reef-newsletter-strip__text {
+  margin: 0 0 var(--space-xl);
+  opacity: 0.95;
+}
+
+.reef-newsletter-strip__fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+@media screen and (min-width: 750px) {
+  .reef-newsletter-strip__fields {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .reef-newsletter-strip__fields .field {
+    flex: 1;
+  }
+}
+
+.reef-newsletter-strip__submit {
+  white-space: nowrap;
+}
+
+.reef-newsletter-strip__privacy {
+  margin: var(--space-md) 0 0;
+  font-size: var(--text-xs);
+  opacity: 0.85;
+}
+
+/* --- Phase 4: Collection + product card --- */
+.reef-collection-hero .collection-hero__title {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+.reef-collection-grid .facets__form {
+  border-radius: var(--border-radius-lg);
+}
+
+.reef-collection-grid__count {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-sm) 0;
+  margin-bottom: var(--space-sm);
+  font-size: var(--text-sm);
+  color: rgba(var(--color-foreground), 0.65);
+}
+
+.reef-collection-grid__count-text {
+  font-weight: var(--font-weight-medium);
+}
+
+.reef-card-product .card {
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--color-border);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.reef-card-product .card-wrapper:hover .card {
+  border-color: rgba(0, 180, 216, 0.35);
+  box-shadow: 0 8px 28px rgba(11, 26, 46, 0.08);
+}
+
+.reef-card-product__condition {
+  margin-top: var(--space-sm);
+}
+
+.reef-collection-pagination.pagination-wrapper {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+.reef-collection-pagination .pagination__item--current {
+  border-radius: var(--border-radius-lg);
+  font-weight: var(--font-weight-semibold);
+}
+
+.reef-collection-grid .facets__form,
+.reef-collection-grid .facet-filters {
+  border-color: rgba(var(--color-foreground), 0.08);
+}
+
+@media screen and (max-width: 989px) {
+  .reef-collection-grid .facets__disclosure-vertical {
+    border-radius: var(--border-radius-lg);
+  }
+
+  .reef-collection-grid .mobile-facets__inner {
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+  }
+}
+
+/* --- Phase 5: PDP (gallery, meta, sticky ATC, related) --- */
+.reef-product__gallery {
+  border-radius: var(--border-radius-lg);
+}
+
+.reef-pdp-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.reef-pdp-meta__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.reef-pdp-meta__note {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media screen and (max-width: 989px) {
+  .reef-product-sticky-atc {
+    position: sticky;
+    bottom: 0;
+    z-index: 4;
+    margin-top: var(--space-md);
+    padding: var(--space-md) 0 calc(var(--space-md) + env(safe-area-inset-bottom, 0px));
+    background: rgba(var(--color-background), 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--color-border);
+    box-shadow: 0 -8px 32px rgba(11, 26, 46, 0.1);
+  }
+
+  .template-product .reef-product {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+}
+
+.reef-related-products .related-products__heading {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+.reef-product .product__accordion.accordion details {
+  border-color: rgba(var(--color-foreground), 0.1);
+}
+
+.reef-product .product__accordion.accordion summary {
+  font-family: var(--font-heading);
+}
+
+/* --- Phase 7: Supporting templates (blog, page, search, 404, accounts) --- */
+.reef-support--page .main-page-title,
+.reef-support--blog .title--primary,
+.reef-support--search .template-search__header .h2,
+.reef-support--collections-list .title--primary {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+.reef-support--article .article-template__title {
+  font-family: var(--font-heading);
+  letter-spacing: -0.03em;
+}
+
+.reef-support--404 .title {
+  font-family: var(--font-heading);
+  letter-spacing: -0.03em;
+}
+
+.reef-404-search {
+  max-width: 48rem;
+  margin: 2rem auto;
+}
+
+.reef-404-search__form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: stretch;
+}
+
+.reef-404-search__form .field__input {
+  flex: 1;
+  min-width: 12rem;
+}
+
+.reef-404-actions {
+  margin-top: var(--space-xl);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.reef-account .customer__title,
+.reef-account h1 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+.reef-account .order-history,
+.reef-account .account table {
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+}
+
+.reef-support--contact .contact__title,
+.reef-support--contact .title {
+  font-family: var(--font-heading);
+}
+
+.reef-support--search .template-search__header {
+  margin-bottom: var(--space-2xl);
+}
+
+/* --- Phase 8: Polish — a11y, motion, performance-friendly defaults --- */
+
+.skip-to-content-link:focus,
+.skip-to-content-link:focus-visible {
+  position: fixed;
+  z-index: 9999;
+  top: var(--space-md);
+  left: var(--space-md);
+  clip: auto;
+  width: auto;
+  height: auto;
+  padding: var(--space-sm) var(--space-md);
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  border: 2px solid var(--color-border-focus);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+:is(a, button, .button, input, select, textarea, summary, [tabindex]:not([tabindex='-1'])):focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+:is(.button, button):focus-visible {
+  box-shadow: 0 0 0 2px rgb(var(--color-background)), 0 0 0 4px var(--color-border-focus);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-trigger.animate--slide-in,
+  .scroll-trigger.animate--fade-in,
+  .scroll-trigger.animate--zoom-in {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --color-border: #94a3b8;
+  }
+
+  .button,
+  .field__input {
+    border-width: 2px;
+  }
+}
