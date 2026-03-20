@@ -247,3 +247,278 @@ input[type='submit'] {
   font-weight: var(--font-weight-medium);
   color: var(--color-text-secondary);
 }
+
+/* --- Phase 2: global chrome (header, announcement, footer, cart drawer) --- */
+
+/* Sticky header glass + logo shrink */
+.reef-header {
+  position: relative;
+  z-index: 4;
+  transition:
+    box-shadow var(--transition-base),
+    background-color var(--transition-base);
+}
+
+.section-header.shopify-section-header-sticky .reef-header {
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background: rgba(250, 251, 252, 0.88) !important;
+  box-shadow: var(--shadow-sm);
+}
+
+.scrolled-past-header .header__heading-logo,
+.scrolled-past-header .header__heading-logo-wrapper {
+  transition: transform var(--transition-base);
+}
+
+.scrolled-past-header .reef-header .header__heading-logo-wrapper {
+  transform: scale(0.92);
+  transform-origin: left center;
+}
+
+/* Coral cart count badge */
+.reef-header .cart-count-bubble {
+  background: var(--color-coral);
+  color: var(--color-cta-primary-text);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Announcement bar: slimmer */
+.reef-announcement.utility-bar {
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+}
+
+.reef-announcement .announcement-bar__message,
+.reef-announcement .announcement-bar__message.h5 {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+/* Predictive search overlay */
+.reef-header-search .search-modal__content {
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-lg);
+}
+
+predictive-search .predictive-search__results,
+.predictive-search__results {
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+}
+
+predictive-search .predictive-search__item {
+  transition: background var(--transition-fast);
+}
+
+predictive-search .predictive-search__item:hover,
+predictive-search .predictive-search__item:focus-within {
+  background: var(--color-reef-teal-subtle);
+}
+
+/* Footer */
+.reef-footer__wave {
+  line-height: 0;
+  margin: 0;
+}
+
+.footer.reef-footer {
+  background: var(--color-bg-dark) !important;
+  color: var(--color-text-inverse);
+  --color-foreground: 250, 251, 252;
+  --color-link: 200, 240, 255;
+}
+
+.reef-footer .footer-block__heading,
+.reef-footer .footer-block__heading.inline-richtext,
+.reef-footer .link,
+.reef-footer a {
+  color: inherit;
+}
+
+.reef-footer .footer-block__details-content a,
+.reef-footer .copyright__content a {
+  color: var(--color-reef-teal-light);
+}
+
+.reef-footer__tagline {
+  text-align: center;
+  max-width: var(--content-narrow-width);
+  margin: 0 auto var(--space-lg);
+  opacity: 0.9;
+  color: var(--color-text-muted);
+}
+
+/* Cart drawer */
+.reef-cart-drawer__footer {
+  padding-bottom: 3rem;
+}
+
+.reef-cart__shipping-bar {
+  margin-top: var(--space-md);
+  padding: var(--space-md);
+  background: rgba(var(--color-foreground), 0.04);
+  border-radius: var(--border-radius-md);
+  border: 1px solid rgba(var(--color-foreground), 0.08);
+}
+
+.reef-cart__shipping-msg {
+  margin: 0 0 var(--space-sm);
+  font-size: var(--text-sm);
+  text-align: center;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.reef-cart__shipping-track {
+  height: 8px;
+  border-radius: var(--border-radius-full);
+  background: rgba(var(--color-foreground), 0.1);
+  overflow: hidden;
+}
+
+.reef-cart__shipping-fill {
+  display: block;
+  height: 100%;
+  border-radius: var(--border-radius-full);
+  background: linear-gradient(90deg, var(--color-reef-teal), var(--color-reef-teal-light));
+  transition: width var(--transition-slow);
+}
+
+.reef-cart__shipping-sub {
+  margin: var(--space-sm) 0 0;
+  font-size: var(--text-xs);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.reef-cart__shipping-free {
+  margin-top: var(--space-md);
+  padding: var(--space-md);
+  background: rgba(46, 204, 113, 0.12);
+  border-radius: var(--border-radius-md);
+  border: 1px solid rgba(46, 204, 113, 0.35);
+  text-align: center;
+}
+
+.reef-cart__shipping-free-text {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: #1a7d45;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+
+.reef-cart__shipping-check svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.reef-cart__order-savings {
+  margin-top: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-reef-teal-subtle);
+  border-radius: var(--border-radius-sm);
+  text-align: center;
+}
+
+.reef-cart__order-savings-text {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-slate);
+}
+
+.reef-cart__checkout.button {
+  background: var(--color-coral) !important;
+  color: var(--color-cta-primary-text) !important;
+  border-color: var(--color-coral) !important;
+  min-height: 5.2rem;
+  font-weight: var(--font-weight-bold);
+}
+
+.reef-cart__checkout.button:hover {
+  background: var(--color-coral-hover) !important;
+  border-color: var(--color-coral-hover) !important;
+}
+
+.reef-cart__trust {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md) var(--space-xl);
+  padding: var(--space-md) 0;
+  margin: 0;
+  list-style: none;
+  font-size: var(--text-xs);
+  color: rgba(var(--color-foreground), 0.65);
+}
+
+.reef-cart__upsell {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(var(--color-foreground), 0.1);
+}
+
+.reef-cart__upsell-title {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  margin: 0 0 var(--space-md);
+  text-align: center;
+  color: var(--color-text-primary);
+}
+
+.reef-cart__upsell-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
+.reef-cart__upsell-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  gap: var(--space-xs);
+  transition: transform var(--transition-fast);
+}
+
+.reef-cart__upsell-card:hover {
+  transform: translateY(-2px);
+}
+
+.reef-cart__upsell-img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--border-radius-sm);
+}
+
+.reef-cart__upsell-name {
+  font-size: var(--text-xs);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.reef-cart__upsell-price {
+  font-size: var(--text-xs);
+  margin: 0;
+  color: rgba(var(--color-foreground), 0.65);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reef-header,
+  .scrolled-past-header .reef-header .header__heading-logo-wrapper,
+  .reef-cart__shipping-fill,
+  .reef-cart__upsell-card {
+    transition: none;
+  }
+}

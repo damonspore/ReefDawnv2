@@ -27,7 +27,13 @@
   }
 {%- endstyle -%}
 
-<footer class="footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+{% comment %}REEF: Wave divider above footer (optional){% endcomment %}
+{%- if section.settings.reef_show_wave -%}
+  <div class="reef-footer__wave" aria-hidden="true">
+    {% render 'reef-wave-divider', fill: '#0B1A2E', background: '#FAFBFC' %}
+  </div>
+{%- endif -%}
+<footer class="footer reef-footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
   {%- liquid
     assign has_social_icons = true
     if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
@@ -298,6 +304,11 @@
       </div>
     </div>
     <div class="footer__content-bottom-wrapper page-width{% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--center{% endif %}">
+      {%- if section.settings.reef_footer_tagline != blank -%}
+        <div class="reef-footer__tagline rte caption">
+          {{ section.settings.reef_footer_tagline }}
+        </div>
+      {%- endif -%}
       <div class="footer__copyright caption">
         <small class="copyright__content"
           >&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url -}}
@@ -491,6 +502,23 @@
       "default": true,
       "label": "t:sections.footer.settings.show_policy.label",
       "info": "t:sections.footer.settings.show_policy.info"
+    },
+    {
+      "type": "header",
+      "content": "Reef Telecom"
+    },
+    {
+      "type": "checkbox",
+      "id": "reef_show_wave",
+      "default": true,
+      "label": "Show wave divider above footer",
+      "info": "Subtle curve between page content and footer (aquatic premium)."
+    },
+    {
+      "type": "richtext",
+      "id": "reef_footer_tagline",
+      "label": "Conservation tagline",
+      "default": "<p>Reef Telecom is committed to marine conservation and e-waste reduction.</p>"
     },
     {
       "type": "header",

@@ -1,6 +1,6 @@
 # ReefDawnv2 execution plan
 
-**Status:** Phase 1 completed (see git history). **Canonical repo:** [github.com/damonspore/ReefDawnv2](https://github.com/damonspore/ReefDawnv2) (`git remote` name `origin`).
+**Status:** Phase 1–2 completed for global chrome (see git history). **Canonical repo:** [github.com/damonspore/ReefDawnv2](https://github.com/damonspore/ReefDawnv2) (`git remote` name `origin`).
 
 ## Decisions
 
@@ -10,7 +10,7 @@
 ## Phases (reference)
 
 1. **Design foundation** — Tokens, Google Fonts (DM Sans / Inter / JetBrains Mono), base snippets, global JSON-LD.
-2. **Header, footer, cart** — Sticky glass header, dark footer + wave, cart drawer enhancements.
+2. **Header, footer, cart** — Sticky glass header (`.reef-header`), slim announcement (`.reef-announcement`), footer wave + dark `.reef-footer` + tagline setting, cart drawer (`.reef-cart-*`), free-shipping threshold in **Theme settings → Reef Telecom**.
 3. **Homepage** — Nine-section funnel in `templates/index.json` + `reef-*` sections.
 4. **Collection + product card** — `card-product`, filters, SEO zones, pagination strategy.
 5. **PDP** — Gallery, tabs, sticky ATC, cross-sell.

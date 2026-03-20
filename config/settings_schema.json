@@ -1451,5 +1451,17 @@
         "default": "scheme-1"
       }
     ]
+  },
+  {
+    "name": "Reef Telecom",
+    "settings": [
+      {
+        "type": "number",
+        "id": "reef_free_shipping_threshold_cents",
+        "label": "Free shipping threshold (cents)",
+        "default": 15000,
+        "info": "Cart subtotal in shop currency minor units (e.g. 15000 = $150.00 USD) to unlock free shipping messaging in the cart drawer."
+      }
+    ]
   }
 ]

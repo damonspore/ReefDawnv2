@@ -17,11 +17,11 @@
   }
 </style>
 
-<cart-drawer class="drawer{% if cart == empty %} is-empty{% endif %}">
+<cart-drawer class="drawer reef-cart-drawer{% if cart == empty %} is-empty{% endif %}">
   <div id="CartDrawer" class="cart-drawer">
     <div id="CartDrawer-Overlay" class="cart-drawer__overlay"></div>
     <div
-      class="drawer__inner gradient color-{{ settings.cart_color_scheme }}"
+      class="drawer__inner reef-cart-drawer__inner gradient color-{{ settings.cart_color_scheme }}"
       role="dialog"
       aria-modal="true"
       aria-label="{{ 'sections.cart.title' | t }}"
@@ -474,7 +474,7 @@
           <div id="CartDrawer-CartErrors" role="alert"></div>
         </form>
       </cart-drawer-items>
-      <div class="drawer__footer" style="padding-bottom: 3rem;">
+      <div class="drawer__footer reef-cart-drawer__footer">
         {%- if settings.show_cart_note -%}
           <details id="Details-CartDrawer">
             <summary>
@@ -498,7 +498,7 @@
         <!-- Start blocks -->
         <!-- Subtotals -->
 
-        <div class="cart-drawer__footer" {{ block.shopify_attributes }}>
+        <div class="cart-drawer__footer reef-cart-drawer__totals" {{ block.shopify_attributes }}>
           <div>
             {%- if cart.cart_level_discount_applications.size > 0 -%}
               <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
@@ -558,25 +558,32 @@
             {%- endif -%}
           </small>
 
-          {%- assign free_shipping_threshold = 30000 -%}
-          {%- assign cart_total = cart.total_price -%}
-          {%- if cart != empty -%}
+          {%- liquid
+            assign free_shipping_threshold = settings.reef_free_shipping_threshold_cents | default: 15000
+            assign cart_total = cart.total_price
+          -%}
+          {%- if cart != empty and free_shipping_threshold > 0 -%}
             {%- if cart_total < free_shipping_threshold -%}
               {%- assign remaining = free_shipping_threshold | minus: cart_total -%}
               {%- assign progress = cart_total | times: 100 | divided_by: free_shipping_threshold -%}
-              <div class="cart-drawer__shipping-bar" style="margin-top: 1rem; padding: 1rem; background: rgba(var(--color-foreground), 0.03); border-radius: 8px; border: 1px solid rgba(var(--color-foreground), 0.06);">
-                <p style="margin: 0 0 0.6rem; font-size: 1.3rem; text-align: center; font-weight: 500;">
-                  You're <strong style="color: #6ddfda;">{{ remaining | money }}</strong> away from <strong>free shipping!</strong>
+              {%- if progress > 100 -%}
+                {%- assign progress = 100 -%}
+              {%- endif -%}
+              <div class="reef-cart__shipping-bar">
+                {%- assign away_money = remaining | money -%}
+                <p class="reef-cart__shipping-msg">
+                  {{ 'reef.cart.shipping_away' | t: amount: away_money }}
                 </p>
-                <div style="background: rgba(var(--color-foreground), 0.08); border-radius: 20px; height: 8px; overflow: hidden;">
-                  <div style="background: linear-gradient(90deg, #6ddfda, #4cc9c0); height: 100%; width: {{ progress }}%; border-radius: 20px; transition: width 0.4s ease;"></div>
+                <div class="reef-cart__shipping-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ progress }}">
+                  <span class="reef-cart__shipping-fill" style="width: {{ progress }}%;"></span>
                 </div>
-                <p style="margin: 0.4rem 0 0; font-size: 1rem; text-align: center; opacity: 0.6;">Add {{ remaining | money }} more to qualify</p>
+                <p class="reef-cart__shipping-sub">{{ 'reef.cart.shipping_add_more' | t: amount: remaining | money }}</p>
               </div>
             {%- else -%}
-              <div style="margin-top: 1rem; padding: 0.8rem 1rem; background: #e8f9f0; border-radius: 8px; text-align: center; border: 1px solid #b8e8cb;">
-                <p style="margin: 0; font-size: 1.3rem; color: #1a7d45; font-weight: 600;">
-                  {{ 'icon-checkmark.svg' | inline_asset_content }} You've earned <strong>free shipping!</strong>
+              <div class="reef-cart__shipping-free">
+                <p class="reef-cart__shipping-free-text">
+                  <span class="reef-cart__shipping-check" aria-hidden="true">{{ 'icon-checkmark.svg' | inline_asset_content }}</span>
+                  {{ 'reef.cart.shipping_free' | t }}
                 </p>
               </div>
             {%- endif -%}
@@ -589,10 +596,8 @@
               {%- endif -%}
             {%- endfor -%}
             {%- if total_savings > 0 -%}
-              <div style="margin-top: 0.8rem; padding: 0.6rem 1rem; background: rgba(236, 249, 250, 0.5); border-radius: 6px; text-align: center;">
-                <p style="margin: 0; font-size: 1.2rem; font-weight: 600; color: #334fb4;">
-                  You're saving {{ total_savings | money }} on this order
-                </p>
+              <div class="reef-cart__order-savings">
+                <p class="reef-cart__order-savings-text">{{ 'reef.cart.order_savings' | t: amount: total_savings | money }}</p>
               </div>
             {%- endif -%}
           {%- endif -%}
@@ -600,11 +605,11 @@
 
         <!-- CTAs -->
 
-        <div class="cart__ctas" {{ block.shopify_attributes }}>
+        <div class="cart__ctas reef-cart__ctas" {{ block.shopify_attributes }}>
           <button
             type="submit"
             id="CartDrawer-Checkout"
-            class="cart__checkout-button button"
+            class="cart__checkout-button button reef-cart__checkout"
             name="checkout"
             form="CartDrawer-Form"
             {% if cart == empty %}
@@ -614,17 +619,17 @@
             {{ 'sections.cart.checkout' | t }}
           </button>
         </div>
-        <div class="cart-drawer__trust" style="display: flex; justify-content: center; gap: 1.5rem; padding: 0.8rem 0; font-size: 1.1rem; color: rgba(var(--color-foreground), 0.55);">
-          <span>🛡️ 10-Year Warranty</span>
-          <span>🔒 Secure Payment</span>
-          <span>🔄 Easy Returns</span>
-        </div>
+        <ul class="reef-cart__trust" role="list">
+          <li>{{ 'reef.cart.trust_warranty' | t }}</li>
+          <li>{{ 'reef.cart.trust_secure' | t }}</li>
+          <li>{{ 'reef.cart.trust_returns' | t }}</li>
+        </ul>
 
         {%- if cart != empty -%}
           {%- assign upsell_product = cart.items.first.product -%}
-          <div id="cart-drawer-recommendations" style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(var(--color-foreground), 0.08);">
-            <p style="font-size: 1.2rem; font-weight: 600; margin: 0 0 1rem; text-align: center;">You may also like</p>
-            <div id="cart-drawer-recs-content" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;"></div>
+          <div id="cart-drawer-recommendations" class="reef-cart__upsell">
+            <p class="reef-cart__upsell-title">{{ 'reef.cart.upsell_title' | t }}</p>
+            <div id="cart-drawer-recs-content" class="reef-cart__upsell-grid"></div>
           </div>
           <script>
             (function() {
@@ -643,10 +648,10 @@
                   products.forEach(function(p) {
                     var img = p.featured_image ? p.featured_image : '';
                     var price = (p.price / 100).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-                    html += '<a href="' + p.url + '" style="text-decoration:none;color:inherit;text-align:center;">';
-                    if (img) html += '<img src="' + img + '&width=200" alt="' + p.title.replace(/"/g, '&quot;') + '" loading="lazy" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:4px;">';
-                    html += '<p style="font-size:1.1rem;margin:0.5rem 0 0.2rem;line-height:1.3;">' + p.title + '</p>';
-                    html += '<p style="font-size:1.1rem;margin:0;color:rgba(var(--color-foreground),0.7);">' + price + '</p>';
+                    html += '<a class="reef-cart__upsell-card" href="' + p.url + '">';
+                    if (img) html += '<img class="reef-cart__upsell-img" src="' + img + '&width=200" alt="' + p.title.replace(/"/g, '&quot;') + '" loading="lazy" width="200" height="200">';
+                    html += '<span class="reef-cart__upsell-name">' + p.title + '</span>';
+                    html += '<span class="reef-cart__upsell-price">' + price + '</span>';
                     html += '</a>';
                   });
                   container.innerHTML = html;

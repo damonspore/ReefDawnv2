@@ -554,6 +554,16 @@
       "certified": "Tested & Certified",
       "secure": "Secure Checkout",
       "shipping": "Fast Shipping"
+    },
+    "cart": {
+      "shipping_away": "You're {{ amount }} away from free shipping!",
+      "shipping_add_more": "Add {{ amount }} more to qualify",
+      "shipping_free": "You've unlocked free shipping!",
+      "order_savings": "You're saving {{ amount }} on this order",
+      "upsell_title": "Complete your setup",
+      "trust_warranty": "10-Year warranty",
+      "trust_secure": "Secure checkout",
+      "trust_returns": "Easy returns"
     }
   }
 }
