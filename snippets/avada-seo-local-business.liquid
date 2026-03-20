@@ -4,11 +4,11 @@
 {
   "@context": "https://schema.org",
   "@type": "ElectronicsStore",
-  "url": "https://www.reeftel.com",
-  "name": "Reef Telecom",
-  "description": "Environmentally Responsible Telecom Sourcing Solutions. Refurbished VoIP phones, thin clients, and network switches.",
+  "url": {{ request.origin | json }},
+  "name": {{ shop.name | json }},
+  "description": {{ shop.description | json }},
   "image": "{{ settings.logo | image_url: width: 600 }}",
-  "email": "sales@reeftel.com",
+  "email": {{ shop.email | json }},
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "1107 Saint Andrews Rd.",
@@ -23,11 +23,22 @@
     "opens": "09:00",
     "closes": "18:00"
   },
-  "sameAs": [
-    "https://www.facebook.com/reeftelecom/",
-    "https://www.instagram.com/reeftelecom/"
-  ],
-  "telephone": "+18882173331",
+  {%- assign local_same_as = '' -%}
+  {%- if settings.social_facebook_link != blank -%}
+    {%- assign local_same_as = local_same_as | append: settings.social_facebook_link | append: '||' -%}
+  {%- endif -%}
+  {%- if settings.social_instagram_link != blank -%}
+    {%- assign local_same_as = local_same_as | append: settings.social_instagram_link | append: '||' -%}
+  {%- endif -%}
+  {%- if local_same_as != blank -%}
+    {%- assign local_same_as_arr = local_same_as | split: '||' -%}
+    "sameAs": [
+      {%- for link in local_same_as_arr -%}
+        {%- unless link == blank -%}{{ link | json }}{%- unless forloop.last -%},{%- endunless -%}{%- endunless -%}
+      {%- endfor -%}
+    ],
+  {%- endif -%}
+  "telephone": {{ shop.phone | default: '+18882173331' | json }},
   "priceRange": "$$"
 }
 </script>
