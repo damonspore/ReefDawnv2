@@ -94,6 +94,69 @@
         "padding_bottom": 36
       }
     },
+    "value_props_home": {
+      "type": "multicolumn",
+      "blocks": {
+        "vp_refurbished": {
+          "type": "column",
+          "settings": {
+            "title": "Certified Refurbished",
+            "text": "<p>Every product is thoroughly tested, certified, and backed by our industry-leading 10-year warranty. Enterprise-grade quality at a fraction of the cost.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "vp_ocean": {
+          "type": "column",
+          "settings": {
+            "title": "Ocean Conservation",
+            "text": "<p>We proudly support OCEARCH, Coral Restoration Foundation, Ocean Conservancy, and WHOI. Choosing refurbished reduces e-waste and protects our oceans.<\/p>",
+            "link_label": "Our Mission",
+            "link": "shopify:\/\/pages\/mission"
+          }
+        },
+        "vp_enterprise": {
+          "type": "column",
+          "settings": {
+            "title": "Enterprise-Grade Equipment",
+            "text": "<p>From Cisco VoIP phones to Dell thin clients and NVIDIA networking switches, we stock the brands that power modern businesses and AI infrastructure.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "vp_support": {
+          "type": "column",
+          "settings": {
+            "title": "Expert IT Support",
+            "text": "<p>Our team of IT professionals provides pre-sales consultation, configuration assistance, and ongoing technical support for every order.<\/p>",
+            "link_label": "Contact Us",
+            "link": "shopify:\/\/pages\/contact-us-1"
+          }
+        }
+      },
+      "block_order": [
+        "vp_refurbished",
+        "vp_ocean",
+        "vp_enterprise",
+        "vp_support"
+      ],
+      "settings": {
+        "title": "Why Choose Reef Telecom?",
+        "heading_size": "h2",
+        "image_width": "third",
+        "image_ratio": "square",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "color_scheme": "background-2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
     "collection_list_iAjpa7": {
       "type": "collection-list",
       "blocks": {
@@ -300,6 +363,7 @@
     "trust_strip_home",
     "1756154740ae1b6fc4",
     "featured_collection",
+    "value_props_home",
     "collection_list_iAjpa7",
     "custom_liquid_n6a8Uy",
     "multicolumn_cqAgL3",
