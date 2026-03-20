@@ -217,6 +217,54 @@
         "padding_bottom": 36
       }
     },
+    "trust_strip_home": {
+      "type": "trust-strip",
+      "blocks": {
+        "trust_warranty": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "\uD83D\uDEE1\uFE0F",
+            "label": "10-Year Warranty",
+            "detail": ""
+          }
+        },
+        "trust_shipping": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "\uD83D\uDE9A",
+            "label": "Free Shipping $300+",
+            "detail": ""
+          }
+        },
+        "trust_reviews": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "\u2B50",
+            "label": "Trustpilot 4.6\/5",
+            "detail": "(924 Reviews)"
+          }
+        },
+        "trust_secure": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "\uD83D\uDD12",
+            "label": "Secure Checkout",
+            "detail": ""
+          }
+        }
+      },
+      "block_order": [
+        "trust_warranty",
+        "trust_shipping",
+        "trust_reviews",
+        "trust_secure"
+      ],
+      "settings": {
+        "color_scheme": "accent-1",
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
     "1711289065cae650c8": {
       "type": "apps",
       "blocks": {
@@ -249,6 +297,7 @@
   },
   "order": [
     "image_banner",
+    "trust_strip_home",
     "1756154740ae1b6fc4",
     "featured_collection",
     "collection_list_iAjpa7",
