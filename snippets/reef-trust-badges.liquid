@@ -1,0 +1,18 @@
+{% comment %}
+  REEF: Horizontal trust row (labels from locales).
+  Optional: pass show_returns, show_certified, show_secure, show_shipping as false to hide.
+{% endcomment %}
+<ul class="reef-trust-badges" role="list">
+  {%- unless show_returns == false -%}
+    <li class="reef-trust-badges__item">{{ 'reef.trust.returns' | t }}</li>
+  {%- endunless -%}
+  {%- unless show_certified == false -%}
+    <li class="reef-trust-badges__item">{{ 'reef.trust.certified' | t }}</li>
+  {%- endunless -%}
+  {%- unless show_secure == false -%}
+    <li class="reef-trust-badges__item">{{ 'reef.trust.secure' | t }}</li>
+  {%- endunless -%}
+  {%- unless show_shipping == false -%}
+    <li class="reef-trust-badges__item">{{ 'reef.trust.shipping' | t }}</li>
+  {%- endunless -%}
+</ul>

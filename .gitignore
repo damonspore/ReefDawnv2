@@ -1,0 +1,24 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Shopify CLI (if used at repo root)
+.shopify/
+
+# Local env (never commit secrets)
+.env
+.env.*
+
+# Misc
+*.zip

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="theme-color" content="#6ddfda">
+    <meta name="theme-color" content="#0B1A2E">
     <link rel="canonical" href="{{ canonical_url }}">
 
     {%- if settings.favicon != blank -%}
@@ -16,6 +16,12 @@
     <link rel="dns-prefetch" href="https://js-na1.hs-scripts.com">
     <link rel="dns-prefetch" href="https://pulse.clickguard.com">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap"
+      rel="stylesheet"
+    >
     {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
@@ -269,6 +275,7 @@
     {% endstyle %}
 
     {{ 'base.aio.min.css' | asset_url | stylesheet_tag }}
+    {{ 'reef-custom.css' | asset_url | stylesheet_tag }}
     <link rel="stylesheet" href="{{ 'cro-enhancements.css' | asset_url }}" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="{{ 'component-cart-items.aio.min.css' | asset_url }}" media="print" onload="this.media='all'">
 
@@ -311,7 +318,7 @@
       }
     </script>
 
-    {%- render 'avada-seo-local-business' -%}
+    {%- render 'reef-seo-global' -%}
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
@@ -393,6 +400,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.aio.min.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+    <script src="{{ 'reef-custom.js' | asset_url }}" defer="defer"></script>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

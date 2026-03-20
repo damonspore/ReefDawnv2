@@ -1,0 +1,20 @@
+{% comment %}
+  REEF: Compare-at savings line (green callout).
+  Pass either `product` or both `compare_at_price` and `price` (cents).
+{% endcomment %}
+{%- liquid
+  assign cp = compare_at_price
+  assign pr = price
+  if product
+    assign cp = product.compare_at_price
+    assign pr = product.price | default: product.selected_or_first_available_variant.price
+  endif
+-%}
+{%- if cp and pr and cp > pr -%}
+  {%- assign save_cents = cp | minus: pr -%}
+  {%- assign save_pct = save_cents | times: 100.0 | divided_by: cp | round -%}
+  {%- assign save_amount = save_cents | money -%}
+  <p class="reef-savings-callout">
+    {{ 'reef.savings.you_save' | t: amount: save_amount, percent: save_pct }}
+  </p>
+{%- endif -%}

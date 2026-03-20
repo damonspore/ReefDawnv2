@@ -539,5 +539,21 @@
       "send_on": "YYYY-MM-DD",
       "send_on_label": "Send on (optional)"
     }
+  },
+  "reef": {
+    "condition": {
+      "refurbished": "Refurbished",
+      "new": "New",
+      "open_box": "Open Box"
+    },
+    "savings": {
+      "you_save": "You save {{ amount }} ({{ percent }}%)"
+    },
+    "trust": {
+      "returns": "30-Day Returns",
+      "certified": "Tested & Certified",
+      "secure": "Secure Checkout",
+      "shipping": "Fast Shipping"
+    }
   }
 }

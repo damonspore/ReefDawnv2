@@ -1,0 +1,28 @@
+{% comment %}
+  REEF: Decorative SVG wave between sections (aquatic premium — subtle curve).
+  @param fill {String} Wave path fill (CSS color). Default: deep ocean.
+  @param background {String} Rect below wave fill. Default: sand.
+  @param height {Number} Viewbox height factor (display height via CSS). Default: 48
+{% endcomment %}
+{%- liquid
+  assign wave_fill = fill | default: '#0B1A2E'
+  assign wave_bg = background | default: '#FAFBFC'
+  assign h = height | default: 48
+-%}
+<div class="reef-wave-divider" style="--reef-wave-h: {{ h }}px;" aria-hidden="true">
+  <svg
+    class="reef-wave-divider__svg"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1440 {{ h }}"
+    preserveAspectRatio="none"
+    width="1440"
+    height="{{ h }}"
+    focusable="false"
+  >
+    <rect width="1440" height="{{ h }}" fill="{{ wave_bg }}"/>
+    <path
+      fill="{{ wave_fill }}"
+      d="M0,{{ h | times: 0.55 }} C360,{{ h | times: 0.15 }} 720,{{ h | times: 0.95 }} 1440,{{ h | times: 0.4 }} L1440,0 L0,0 Z"
+    />
+  </svg>
+</div>

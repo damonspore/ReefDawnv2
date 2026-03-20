@@ -1,0 +1,94 @@
+{% comment %}
+  REEF: Site-wide Organization + WebSite (SearchAction) JSON-LD.
+{% endcomment %}
+{%- liquid
+  assign logo_url = nil
+  if settings.logo
+    assign logo_url = settings.logo | image_url: width: 512
+  endif
+  assign search_template = shop.url | append: '/search?q={search_term_string}'
+-%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    "url": {{ shop.url | json }}
+    {%- if logo_url -%}
+    ,"logo": {{ logo_url | json }}
+    {%- endif -%}
+    {%- if shop.email != blank -%}
+    ,"email": {{ shop.email | json }}
+    {%- endif -%}
+    {%- if shop.address -%}
+      {%- assign addr = shop.address -%}
+      {%- if addr.address1 != blank or addr.city != blank or addr.zip != blank -%}
+    ,"address": {
+      "@type": "PostalAddress"
+      {%- if addr.address1 != blank -%}
+      ,"streetAddress": {{ addr.address1 | json }}
+      {%- endif -%}
+      {%- if addr.city != blank -%}
+      ,"addressLocality": {{ addr.city | json }}
+      {%- endif -%}
+      {%- if addr.province != blank -%}
+      ,"addressRegion": {{ addr.province | json }}
+      {%- endif -%}
+      {%- if addr.zip != blank -%}
+      ,"postalCode": {{ addr.zip | json }}
+      {%- endif -%}
+      {%- if addr.country_code != blank -%}
+      ,"addressCountry": {{ addr.country_code | json }}
+      {%- endif -%}
+    }
+      {%- endif -%}
+    {%- endif -%}
+    ,"sameAs": [
+      {%- assign comma = false -%}
+      {%- if settings.social_facebook_link != blank -%}
+        {{- settings.social_facebook_link | json -}}
+        {%- assign comma = true -%}
+      {%- endif -%}
+      {%- if settings.social_instagram_link != blank -%}
+        {%- if comma -%},{%- endif -%}
+        {{- settings.social_instagram_link | json -}}
+        {%- assign comma = true -%}
+      {%- endif -%}
+      {%- if settings.social_twitter_link != blank -%}
+        {%- if comma -%},{%- endif -%}
+        {{- settings.social_twitter_link | json -}}
+        {%- assign comma = true -%}
+      {%- endif -%}
+      {%- if settings.social_youtube_link != blank -%}
+        {%- if comma -%},{%- endif -%}
+        {{- settings.social_youtube_link | json -}}
+        {%- assign comma = true -%}
+      {%- endif -%}
+      {%- if settings.social_tiktok_link != blank -%}
+        {%- if comma -%},{%- endif -%}
+        {{- settings.social_tiktok_link | json -}}
+        {%- assign comma = true -%}
+      {%- endif -%}
+      {%- if settings.social_pinterest_link != blank -%}
+        {%- if comma -%},{%- endif -%}
+        {{- settings.social_pinterest_link | json -}}
+      {%- endif -%}
+    ]
+  }
+</script>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": {{ shop.name | json }},
+    "url": {{ shop.url | json }},
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": {{ search_template | json }}
+      },
+      "query-input": "required name=search_term_string"
+    }
+  }
+</script>

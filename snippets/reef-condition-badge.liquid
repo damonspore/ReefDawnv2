@@ -1,0 +1,17 @@
+{% comment %}
+  REEF: Product condition pill (teal / green / amber).
+  @param condition {String} refurbished | new | open_box
+{% endcomment %}
+{%- liquid
+  assign c = condition | default: 'refurbished' | downcase
+  assign label = 'reef.condition.refurbished' | t
+  assign mod = 'reef-condition-badge--refurbished'
+  if c == 'new'
+    assign label = 'reef.condition.new' | t
+    assign mod = 'reef-condition-badge--new'
+  elsif c == 'open_box' or c == 'open-box' or c == 'open box'
+    assign label = 'reef.condition.open_box' | t
+    assign mod = 'reef-condition-badge--open'
+  endif
+-%}
+<span class="reef-condition-badge {{ mod }}">{{ label }}</span>
